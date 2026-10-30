@@ -1,0 +1,61 @@
+# A4. Signed price deviation by trader-pair type (all_trades)
+# Data: trades_panel.csv (executed trades, rounds 1-12 of the Carbon Trading stage, 10 sessions).
+# signed_diff = price - eq_price (eq_price in {3, 6, 9} is the theoretical competitive permit price = matched tax rate);
+# rel_dev = price / eq_price - 1; mins = seconds / 60 within the 120-second trading window.
+# Samples: 'iqr_filtered' = existing per-session-round IQR outlier rule of run_trade_mkt_reg.py; 'all_trades' = no filter.
+# Pair types: Db_Ss = dominant buyer / small seller, Sb_Ds = small buyer / dominant seller, Db_Ds = both dominant; base = small / small.
+# Model (1) absorbs session x round fixed effects (C(cluster_round), not printed); *_eq terms are pair x equal-allocation interactions.
+# Hypotheses: pair premium under grandfathering, under equal allocation, and their difference.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): signed_diff ~ C(cluster_round) + Db_Ss + Sb_Ds + Db_Ds + Db_Ss_eq + Sb_Ds_eq + Db_Ds_eq + mins
+N = 1863, clusters (session_code) = 10, R2 = 0.515, bootstrap = webb (B = 9999)
+| term      | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-----------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept | 42.134    | (1.151)      |                 0     |                0     |                   0.139 |
+| Db_Ss     | -1.385    | (0.745)      |                 0.063 |                0.096 |                   0.086 |
+| Sb_Ds     | 0.608     | (1.311)      |                 0.643 |                0.654 |                   0.715 |
+| Db_Ds     | -0.827    | (1.279)      |                 0.518 |                0.534 |                   0.569 |
+| Db_Ss_eq  | 0.808     | (2.408)      |                 0.737 |                0.745 |                   0.71  |
+| Sb_Ds_eq  | -1.745    | (1.694)      |                 0.303 |                0.33  |                   0.363 |
+| Db_Ds_eq  | 3.443     | (2.400)      |                 0.152 |                0.185 |                   0.394 |
+| mins      | -5.395*** | (0.785)      |                 0     |                0     |                   0     |
+--- linear hypotheses ---
+| hypothesis           |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| Db_Ss = 0            |     -1.385 | (0.745)      |                 0.063 |                0.096 |                   0.086 |
+| Db_Ss + Db_Ss_eq = 0 |     -0.577 | (2.261)      |                 0.799 |                0.804 |                   0.704 |
+| Db_Ss_eq = 0         |      0.808 | (2.408)      |                 0.737 |                0.745 |                   0.71  |
+| Sb_Ds = 0            |      0.608 | (1.311)      |                 0.643 |                0.654 |                   0.715 |
+| Sb_Ds + Sb_Ds_eq = 0 |     -1.137 | (1.061)      |                 0.284 |                0.312 |                   0.283 |
+| Sb_Ds_eq = 0         |     -1.745 | (1.694)      |                 0.303 |                0.33  |                   0.363 |
+
+=== Model (2): signed_diff ~ (Db_Ss + Sb_Ds + Db_Ds)*is_equal + eq_price_low + eq_price_high + mins + round
+N = 1863, clusters (session_code) = 10, R2 = 0.342, bootstrap = webb (B = 9999)
+| term           | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept      | 38.906*** | (3.253)      |                 0     |                0     |                   0     |
+| Db_Ss          | -1.284    | (1.075)      |                 0.232 |                0.263 |                   0.359 |
+| Sb_Ds          | 0.253     | (1.709)      |                 0.882 |                0.885 |                   0.893 |
+| Db_Ds          | -2.221    | (1.558)      |                 0.154 |                0.188 |                   0.177 |
+| is_equal       | 6.644*    | (2.299)      |                 0.004 |                0.018 |                   0.013 |
+| Db_Ss:is_equal | 1.021     | (2.666)      |                 0.702 |                0.711 |                   0.732 |
+| Sb_Ds:is_equal | 0.434     | (2.377)      |                 0.855 |                0.859 |                   0.881 |
+| Db_Ds:is_equal | 4.288     | (3.137)      |                 0.172 |                0.205 |                   0.547 |
+| eq_price_low   | 0.234     | (0.692)      |                 0.736 |                0.743 |                   0.741 |
+| eq_price_high  | 0.480     | (1.899)      |                 0.8   |                0.806 |                   0.828 |
+| mins           | -5.630*** | (0.738)      |                 0     |                0     |                   0     |
+| round          | -2.671*** | (0.446)      |                 0     |                0     |                   0     |
+--- linear hypotheses ---
+| hypothesis                 |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| Db_Ss = 0                  |     -1.284 | (1.075)      |                 0.232 |                0.263 |                   0.359 |
+| Db_Ss + Db_Ss:is_equal = 0 |     -0.263 | (2.594)      |                 0.919 |                0.921 |                   0.906 |
+| Db_Ss:is_equal = 0         |      1.021 | (2.666)      |                 0.702 |                0.711 |                   0.732 |
+| Sb_Ds = 0                  |      0.253 | (1.709)      |                 0.882 |                0.885 |                   0.893 |
+| Sb_Ds + Sb_Ds:is_equal = 0 |      0.687 | (1.701)      |                 0.686 |                0.696 |                   0.592 |
+| Sb_Ds:is_equal = 0         |      0.434 | (2.377)      |                 0.855 |                0.859 |                   0.881 |
+

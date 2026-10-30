@@ -1,0 +1,46 @@
+# A11/A12. Table 5-6 allocation specifications (trading rounds), session-clustered, full_sample
+# Hypotheses: dominant - small under grandfathering; dominant - small under equal allocation; difference of the two;
+# equal - grandfathering for small firms; equal - grandfathering for dominant firms.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): emission_diff ~ is_equal*is_dominant + eq_price_low + eq_price_high
+N = 1800, clusters (session_code) = 10, R2 = 0.200, bootstrap = webb (B = 9999)
+| term                 | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept            | -0.688**  | (0.108)      |                 0     |                0     |                   0.002 |
+| is_equal             | 0.503*    | (0.151)      |                 0.001 |                0.009 |                   0.01  |
+| is_dominant          | 1.469     | (0.459)      |                 0.001 |                0.011 |                   0.073 |
+| is_equal:is_dominant | -3.936*** | (0.676)      |                 0     |                0     |                   0.001 |
+| eq_price_low         | 0.885***  | (0.124)      |                 0     |                0     |                   0     |
+| eq_price_high        | -0.728*** | (0.076)      |                 0     |                0     |                   0     |
+--- linear hypotheses ---
+| hypothesis                             |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_dominant = 0                        |      1.469 | (0.459)      |                 0.001 |                0.011 |                   0.073 |
+| is_dominant + is_dominant:is_equal = 0 |     -2.467 | (0.496)      |                 0     |                0.001 |                   0.028 |
+| is_dominant:is_equal = 0               |     -3.936 | (0.676)      |                 0     |                0     |                   0.001 |
+| is_equal = 0                           |      0.503 | (0.151)      |                 0.001 |                0.009 |                   0.01  |
+| is_equal + is_dominant:is_equal = 0    |     -3.433 | (0.555)      |                 0     |                0     |                   0.001 |
+
+=== Model (2): production_profit_diff ~ is_equal*is_dominant + eq_price_low + eq_price_high
+N = 1800, clusters (session_code) = 10, R2 = 0.127, bootstrap = webb (B = 9999)
+| term                 | coef       | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept            | -11.905*** | (1.219)      |                 0     |                0     |                   0     |
+| is_equal             | 4.135*     | (1.733)      |                 0.017 |                0.041 |                   0.05  |
+| is_dominant          | 10.410     | (3.868)      |                 0.007 |                0.025 |                   0.082 |
+| is_equal:is_dominant | -29.254**  | (5.909)      |                 0     |                0.001 |                   0.002 |
+| eq_price_low         | 6.738***   | (1.306)      |                 0     |                0.001 |                   0     |
+| eq_price_high        | -5.324***  | (0.754)      |                 0     |                0     |                   0     |
+--- linear hypotheses ---
+| hypothesis                             |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_dominant = 0                        |     10.41  | (3.868)      |                 0.007 |                0.025 |                   0.082 |
+| is_dominant + is_dominant:is_equal = 0 |    -18.844 | (4.467)      |                 0     |                0.002 |                   0.028 |
+| is_dominant:is_equal = 0               |    -29.254 | (5.909)      |                 0     |                0.001 |                   0.002 |
+| is_equal = 0                           |      4.135 | (1.733)      |                 0.017 |                0.041 |                   0.05  |
+| is_equal + is_dominant:is_equal = 0    |    -25.119 | (4.506)      |                 0     |                0     |                   0.001 |
+

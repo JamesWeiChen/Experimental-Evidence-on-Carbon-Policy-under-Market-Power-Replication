@@ -1,0 +1,543 @@
+=== Outcome: emission_diff | HC3 Robust SE ===
+| Y = emission_diff      | (1)        | (2)        |
+|------------------------|------------|------------|
+| Intercept              | -5.917***  | -7.150***  |
+|                        | (0.345)    | (0.390)    |
+| is_equal               | -4.267***  | -1.800**   |
+|                        | (0.377)    | (0.604)    |
+| eq_price_low           | 13.275***  | 16.100***  |
+|                        | (0.442)    | (0.605)    |
+| eq_price_high          | -10.925*** | -10.050*** |
+|                        | (0.467)    | (0.593)    |
+| is_equal:eq_price_low  |            | -5.650***  |
+|                        |            | (0.870)    |
+| is_equal:eq_price_high |            | -1.750     |
+|                        |            | (0.929)    |
+| N                      | 1800       | 1800       |
+| AIC                    | 12594.6    | 12558.8    |
+| BIC                    | 12616.6    | 12591.7    |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=2584.888, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=1649.951, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=43.548, df=2, p=0.0000
+
+
+=== Outcome: emission_diff | Clustered SE (by session_code) ===
+| Y = emission_diff      | (1)        | (2)        |
+|------------------------|------------|------------|
+| Intercept              | -5.917***  | -7.150***  |
+|                        | (1.651)    | (1.934)    |
+| is_equal               | -4.267***  | -1.800     |
+|                        | (1.231)    | (2.503)    |
+| eq_price_low           | 13.275***  | 16.100***  |
+|                        | (1.859)    | (2.224)    |
+| eq_price_high          | -10.925*** | -10.050*** |
+|                        | (1.137)    | (1.389)    |
+| is_equal:eq_price_low  |            | -5.650     |
+|                        |            | (3.206)    |
+| is_equal:eq_price_high |            | -1.750     |
+|                        |            | (2.199)    |
+| N                      | 1800       | 1800       |
+| AIC                    | 12594.6    | 12558.8    |
+| BIC                    | 12616.6    | 12591.7    |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=545.423, df=1, p=0.0000
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=732.374, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=5.873, df=2, p=0.0530
+
+
+=== Outcome: surplus_diff | HC3 Robust SE ===
+| Y = surplus_diff       | (1)         | (2)         |
+|------------------------|-------------|-------------|
+| Intercept              | -111.849*** | -121.607*** |
+|                        | (3.169)     | (4.271)     |
+| is_equal               | -0.140      | 19.377***   |
+|                        | (2.573)     | (5.098)     |
+| eq_price_low           | 21.425***   | 35.238***   |
+|                        | (3.110)     | (4.965)     |
+| eq_price_high          | -14.305***  | 1.157       |
+|                        | (3.444)     | (4.746)     |
+| is_equal:eq_price_low  |             | -27.628***  |
+|                        |             | (6.167)     |
+| is_equal:eq_price_high |             | -30.923***  |
+|                        |             | (6.834)     |
+| N                      | 1800        | 1800        |
+| AIC                    | 19506.7     | 19481.3     |
+| BIC                    | 19528.7     | 19514.3     |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=154.749, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=108.570, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=25.080, df=2, p=0.0000
+
+
+=== Outcome: surplus_diff | Clustered SE (by session_code) ===
+| Y = surplus_diff       | (1)         | (2)         |
+|------------------------|-------------|-------------|
+| Intercept              | -111.849*** | -121.607*** |
+|                        | (8.084)     | (12.245)    |
+| is_equal               | -0.140      | 19.377      |
+|                        | (11.194)    | (17.436)    |
+| eq_price_low           | 21.425      | 35.238      |
+|                        | (13.038)    | (22.556)    |
+| eq_price_high          | -14.305     | 1.157       |
+|                        | (8.339)     | (11.760)    |
+| is_equal:eq_price_low  |             | -27.628     |
+|                        |             | (24.406)    |
+| is_equal:eq_price_high |             | -30.923*    |
+|                        |             | (13.112)    |
+| N                      | 1800        | 1800        |
+| AIC                    | 19506.7     | 19481.3     |
+| BIC                    | 19528.7     | 19514.3     |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=18.710, df=1, p=0.0000
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=8.006, df=1, p=0.0047
+Wald test (interaction terms jointly zero): chi2=6.765, df=2, p=0.0340
+
+
+=== Outcome: production_diff | HC3 Robust SE ===
+| Y = production_diff    | (1)       | (2)       |
+|------------------------|-----------|-----------|
+| Intercept              | -6.942*** | -8.150*** |
+|                        | (0.303)   | (0.365)   |
+| is_equal               | 0.883**   | 3.300***  |
+|                        | (0.316)   | (0.489)   |
+| eq_price_low           | 9.700***  | 12.150*** |
+|                        | (0.363)   | (0.518)   |
+| eq_price_high          | -8.025*** | -6.850*** |
+|                        | (0.394)   | (0.556)   |
+| is_equal:eq_price_low  |           | -4.900*** |
+|                        |           | (0.713)   |
+| is_equal:eq_price_high |           | -2.350**  |
+|                        |           | (0.782)   |
+| N                      | 1800      | 1800      |
+| AIC                    | 11958.5   | 11921.8   |
+| BIC                    | 11980.4   | 11954.7   |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=1932.006, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=1161.762, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=47.233, df=2, p=0.0000
+
+
+=== Outcome: production_diff | Clustered SE (by session_code) ===
+| Y = production_diff    | (1)       | (2)       |
+|------------------------|-----------|-----------|
+| Intercept              | -6.942*** | -8.150*** |
+|                        | (1.288)   | (1.388)   |
+| is_equal               | 0.883     | 3.300     |
+|                        | (1.303)   | (1.757)   |
+| eq_price_low           | 9.700***  | 12.150*** |
+|                        | (1.329)   | (1.533)   |
+| eq_price_high          | -8.025*** | -6.850*** |
+|                        | (0.793)   | (0.978)   |
+| is_equal:eq_price_low  |           | -4.900*   |
+|                        |           | (2.097)   |
+| is_equal:eq_price_high |           | -2.350    |
+|                        |           | (1.380)   |
+| N                      | 1800      | 1800      |
+| AIC                    | 11958.5   | 11921.8   |
+| BIC                    | 11980.4   | 11954.7   |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=499.125, df=1, p=0.0000
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=712.081, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=5.493, df=2, p=0.0642
+
+
+=== Outcome: emission_policy_diff | HC3 Robust SE ===
+| Y = emission_policy_diff   | (1)       | (2)       |
+|----------------------------|-----------|-----------|
+| Intercept                  | -5.950*** | -7.150*** |
+|                            | (0.323)   | (0.390)   |
+| is_equal                   | -4.200*** | -1.800**  |
+|                            | (0.289)   | (0.604)   |
+| eq_price_low               | -1.675*** | 1.000*    |
+|                            | (0.392)   | (0.492)   |
+| eq_price_high              | 4.025***  | 4.950***  |
+|                            | (0.357)   | (0.432)   |
+| is_equal:eq_price_low      |           | -5.350*** |
+|                            |           | (0.770)   |
+| is_equal:eq_price_high     |           | -1.850**  |
+|                            |           | (0.708)   |
+| N                          | 1800      | 1800      |
+| AIC                        | 11639.1   | 11583.0   |
+| BIC                        | 11661.0   | 11615.9   |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=342.502, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=124.696, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=55.707, df=2, p=0.0000
+
+
+=== Outcome: emission_policy_diff | Clustered SE (by session_code) ===
+| Y = emission_policy_diff   | (1)       | (2)       |
+|----------------------------|-----------|-----------|
+| Intercept                  | -5.950*** | -7.150*** |
+|                            | (1.632)   | (1.934)   |
+| is_equal                   | -4.200**  | -1.800    |
+|                            | (1.303)   | (2.503)   |
+| eq_price_low               | -1.675    | 1.000     |
+|                            | (1.755)   | (2.058)   |
+| eq_price_high              | 4.025***  | 4.950**   |
+|                            | (1.173)   | (1.651)   |
+| is_equal:eq_price_low      |           | -5.350    |
+|                            |           | (3.025)   |
+| is_equal:eq_price_high     |           | -1.850    |
+|                            |           | (2.264)   |
+| N                          | 1800      | 1800      |
+| AIC                        | 11639.1   | 11583.0   |
+| BIC                        | 11661.0   | 11615.9   |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=32.000, df=1, p=0.0000
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=26.572, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=4.734, df=2, p=0.0938
+
+
+=== Outcome: production_policy_diff | HC3 Robust SE ===
+| Y = production_policy_diff   | (1)       | (2)       |
+|------------------------------|-----------|-----------|
+| Intercept                    | -6.975*** | -8.150*** |
+|                              | (0.285)   | (0.365)   |
+| is_equal                     | 0.950***  | 3.300***  |
+|                              | (0.242)   | (0.489)   |
+| eq_price_low                 | -0.750*   | 1.550***  |
+|                              | (0.318)   | (0.463)   |
+| eq_price_high                | 2.425***  | 3.650***  |
+|                              | (0.304)   | (0.421)   |
+| is_equal:eq_price_low        |           | -4.600*** |
+|                              |           | (0.622)   |
+| is_equal:eq_price_high       |           | -2.450*** |
+|                              |           | (0.602)   |
+| N                            | 1800      | 1800      |
+| AIC                          | 10992.9   | 10935.2   |
+| BIC                          | 11014.9   | 10968.2   |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=145.195, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=35.148, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=55.435, df=2, p=0.0000
+
+
+=== Outcome: production_policy_diff | Clustered SE (by session_code) ===
+| Y = production_policy_diff   | (1)       | (2)       |
+|------------------------------|-----------|-----------|
+| Intercept                    | -6.975*** | -8.150*** |
+|                              | (1.291)   | (1.388)   |
+| is_equal                     | 0.950     | 3.300     |
+|                              | (1.424)   | (1.757)   |
+| eq_price_low                 | -0.750    | 1.550     |
+|                              | (1.262)   | (1.391)   |
+| eq_price_high                | 2.425**   | 3.650**   |
+|                              | (0.836)   | (1.200)   |
+| is_equal:eq_price_low        |           | -4.600*   |
+|                              |           | (2.004)   |
+| is_equal:eq_price_high       |           | -2.450    |
+|                              |           | (1.459)   |
+| N                            | 1800      | 1800      |
+| AIC                          | 10992.9   | 10935.2   |
+| BIC                          | 11014.9   | 10968.2   |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=15.000, df=1, p=0.0001
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=9.141, df=1, p=0.0025
+Wald test (interaction terms jointly zero): chi2=5.297, df=2, p=0.0708
+
+
+=== Outcome: pi_policy_diff | HC3 Robust SE ===
+| Y = pi_policy_diff     | (1)         | (2)         |
+|------------------------|-------------|-------------|
+| Intercept              | -110.132*** | -121.607*** |
+|                        | (3.166)     | (4.271)     |
+| is_equal               | -3.573      | 19.377***   |
+|                        | (2.509)     | (5.098)     |
+| eq_price_low           | 16.650***   | 41.288***   |
+|                        | (3.297)     | (5.231)     |
+| eq_price_high          | 21.771***   | 31.557***   |
+|                        | (3.162)     | (4.579)     |
+| is_equal:eq_price_low  |             | -49.278***  |
+|                        |             | (6.445)     |
+| is_equal:eq_price_high |             | -19.573**   |
+|                        |             | (6.259)     |
+| N                      | 1800        | 1800        |
+| AIC                    | 19416.6     | 19353.9     |
+| BIC                    | 19438.6     | 19386.9     |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=3.515, df=1, p=0.0608
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=7.991, df=1, p=0.0047
+Wald test (interaction terms jointly zero): chi2=63.999, df=2, p=0.0000
+
+
+=== Outcome: pi_policy_diff | Clustered SE (by session_code) ===
+| Y = pi_policy_diff     | (1)         | (2)         |
+|------------------------|-------------|-------------|
+| Intercept              | -110.132*** | -121.607*** |
+|                        | (8.443)     | (12.245)    |
+| is_equal               | -3.573      | 19.377      |
+|                        | (11.084)    | (17.436)    |
+| eq_price_low           | 16.650      | 41.288      |
+|                        | (15.028)    | (22.330)    |
+| eq_price_high          | 21.771**    | 31.557*     |
+|                        | (7.638)     | (13.003)    |
+| is_equal:eq_price_low  |             | -49.278     |
+|                        |             | (25.177)    |
+| is_equal:eq_price_high |             | -19.573     |
+|                        |             | (13.817)    |
+| N                      | 1800        | 1800        |
+| AIC                    | 19416.6     | 19353.9     |
+| BIC                    | 19438.6     | 19386.9     |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=0.321, df=1, p=0.5708
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=0.795, df=1, p=0.3725
+Wald test (interaction terms jointly zero): chi2=4.087, df=2, p=0.1296
+
+
+=== Outcome: surplus_policy_diff | HC3 Robust SE ===
+| Y = surplus_policy_diff   | (1)         | (2)         |
+|---------------------------|-------------|-------------|
+| Intercept                 | -111.882*** | -121.607*** |
+|                           | (3.164)     | (4.271)     |
+| is_equal                  | -0.073      | 19.377***   |
+|                           | (2.547)     | (5.098)     |
+| eq_price_low              | 45.825***   | 59.738***   |
+|                           | (3.142)     | (5.026)     |
+| eq_price_high             | 9.695**     | 24.957***   |
+|                           | (3.371)     | (4.671)     |
+| is_equal:eq_price_low     |             | -27.828***  |
+|                           |             | (6.232)     |
+| is_equal:eq_price_high    |             | -30.523***  |
+|                           |             | (6.688)     |
+| N                         | 1800        | 1800        |
+| AIC                       | 19470.8     | 19445.1     |
+| BIC                       | 19492.8     | 19478.1     |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=164.065, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=114.130, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=25.119, df=2, p=0.0000
+
+
+=== Outcome: surplus_policy_diff | Clustered SE (by session_code) ===
+| Y = surplus_policy_diff   | (1)         | (2)         |
+|---------------------------|-------------|-------------|
+| Intercept                 | -111.882*** | -121.607*** |
+|                           | (8.111)     | (12.245)    |
+| is_equal                  | -0.073      | 19.377      |
+|                           | (11.296)    | (17.436)    |
+| eq_price_low              | 45.825***   | 59.738**    |
+|                           | (13.153)    | (22.992)    |
+| eq_price_high             | 9.695       | 24.957*     |
+|                           | (8.368)     | (11.787)    |
+| is_equal:eq_price_low     |             | -27.828     |
+|                           |             | (24.627)    |
+| is_equal:eq_price_high    |             | -30.523*    |
+|                           |             | (13.289)    |
+| N                         | 1800        | 1800        |
+| AIC                       | 19470.8     | 19445.1     |
+| BIC                       | 19492.8     | 19478.1     |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=19.569, df=1, p=0.0000
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=7.878, df=1, p=0.0050
+Wald test (interaction terms jointly zero): chi2=6.515, df=2, p=0.0385
+
+
+=== Outcome: within_group_sd_profit | HC3 Robust SE ===
+| Y = within_group_sd_profit   | (1)       | (2)        |
+|------------------------------|-----------|------------|
+| Intercept                    | 49.166*** | 60.557***  |
+|                              | (2.173)   | (2.211)    |
+| is_equal                     | 27.777*** | 4.996      |
+|                              | (2.520)   | (3.937)    |
+| eq_price_low                 | 0.685     | -16.562*** |
+|                              | (2.852)   | (2.559)    |
+| eq_price_high                | 3.988     | -12.937*** |
+|                              | (3.200)   | (2.610)    |
+| is_equal:eq_price_low        |           | 34.495***  |
+|                              |           | (5.613)    |
+| is_equal:eq_price_high       |           | 33.849***  |
+|                              |           | (6.323)    |
+| N                            | 1800      | 1800       |
+| AIC                          | 19432.6   | 19395.0    |
+| BIC                          | 19454.5   | 19428.0    |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=1.069, df=1, p=0.3013
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=3.667, df=1, p=0.0555
+Wald test (interaction terms jointly zero): chi2=46.567, df=2, p=0.0000
+
+
+=== Outcome: within_group_sd_profit | Clustered SE (by session_code) ===
+| Y = within_group_sd_profit   | (1)       | (2)       |
+|------------------------------|-----------|-----------|
+| Intercept                    | 49.166*** | 60.557*** |
+|                              | (8.678)   | (8.679)   |
+| is_equal                     | 27.777*   | 4.996     |
+|                              | (11.604)  | (13.647)  |
+| eq_price_low                 | 0.685     | -16.562   |
+|                              | (11.401)  | (10.797)  |
+| eq_price_high                | 3.988     | -12.937*  |
+|                              | (10.646)  | (6.098)   |
+| is_equal:eq_price_low        |           | 34.495    |
+|                              |           | (19.697)  |
+| is_equal:eq_price_high       |           | 33.849    |
+|                              |           | (18.061)  |
+| N                            | 1800      | 1800      |
+| AIC                          | 19432.6   | 19395.0   |
+| BIC                          | 19454.5   | 19428.0   |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=0.094, df=1, p=0.7589
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=0.349, df=1, p=0.5549
+Wald test (interaction terms jointly zero): chi2=4.872, df=2, p=0.0875
+
+
+=== Outcome: within_group_sd_pi_policy_diff | HC3 Robust SE ===
+| Y = within_group_sd_pi_policy_diff   | (1)       | (2)      |
+|--------------------------------------|-----------|----------|
+| Intercept                            | 8.799***  | 9.414*** |
+|                                      | (0.285)   | (0.359)  |
+| is_equal                             | 0.811**   | -0.417   |
+|                                      | (0.284)   | (0.459)  |
+| eq_price_low                         | 1.299***  | -0.559   |
+|                                      | (0.366)   | (0.563)  |
+| eq_price_high                        | -1.244*** | -1.229** |
+|                                      | (0.318)   | (0.455)  |
+| is_equal:eq_price_low                |           | 3.716*** |
+|                                      |           | (0.724)  |
+| is_equal:eq_price_high               |           | -0.030   |
+|                                      |           | (0.632)  |
+| N                                    | 1800      | 1800     |
+| AIC                                  | 11574.7   | 11539.8  |
+| BIC                                  | 11596.7   | 11572.8  |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=50.368, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=1.692, df=1, p=0.1933
+Wald test (interaction terms jointly zero): chi2=33.749, df=2, p=0.0000
+
+
+=== Outcome: within_group_sd_pi_policy_diff | Clustered SE (by session_code) ===
+| Y = within_group_sd_pi_policy_diff   | (1)      | (2)      |
+|--------------------------------------|----------|----------|
+| Intercept                            | 8.799*** | 9.414*** |
+|                                      | (0.650)  | (1.019)  |
+| is_equal                             | 0.811    | -0.417   |
+|                                      | (1.131)  | (1.459)  |
+| eq_price_low                         | 1.299    | -0.559   |
+|                                      | (1.442)  | (2.448)  |
+| eq_price_high                        | -1.244   | -1.229   |
+|                                      | (0.883)  | (1.420)  |
+| is_equal:eq_price_low                |          | 3.716    |
+|                                      |          | (2.606)  |
+| is_equal:eq_price_high               |          | -0.030   |
+|                                      |          | (1.766)  |
+| N                                    | 1800     | 1800     |
+| AIC                                  | 11574.7  | 11539.8  |
+| BIC                                  | 11596.7  | 11572.8  |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=3.277, df=1, p=0.0702
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=0.104, df=1, p=0.7467
+Wald test (interaction terms jointly zero): chi2=2.416, df=2, p=0.2988
+
+
+=== Outcome: dominant_profit_share | HC3 Robust SE ===
+| Y = dominant_profit_share   | (1)       | (2)       |
+|-----------------------------|-----------|-----------|
+| Intercept                   | 0.365***  | 0.321***  |
+|                             | (0.011)   | (0.012)   |
+| is_equal                    | -0.239*** | -0.152*** |
+|                             | (0.015)   | (0.014)   |
+| eq_price_low                | -0.032**  | -0.040*   |
+|                             | (0.012)   | (0.016)   |
+| eq_price_high               | 0.008     | 0.147***  |
+|                             | (0.021)   | (0.025)   |
+| is_equal:eq_price_low       |           | 0.017     |
+|                             |           | (0.023)   |
+| is_equal:eq_price_high      |           | -0.277*** |
+|                             |           | (0.042)   |
+| N                           | 1800      | 1800      |
+| AIC                         | 1091.2    | 1016.9    |
+| BIC                         | 1113.2    | 1049.9    |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=3.366, df=1, p=0.0666
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=62.828, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=48.873, df=2, p=0.0000
+
+
+=== Outcome: dominant_profit_share | Clustered SE (by session_code) ===
+| Y = dominant_profit_share   | (1)      | (2)      |
+|-----------------------------|----------|----------|
+| Intercept                   | 0.365*** | 0.321*** |
+|                             | (0.054)  | (0.045)  |
+| is_equal                    | -0.239** | -0.152** |
+|                             | (0.086)  | (0.054)  |
+| eq_price_low                | -0.032   | -0.040   |
+|                             | (0.038)  | (0.050)  |
+| eq_price_high               | 0.008    | 0.147*   |
+|                             | (0.096)  | (0.059)  |
+| is_equal:eq_price_low       |          | 0.017    |
+|                             |          | (0.076)  |
+| is_equal:eq_price_high      |          | -0.277   |
+|                             |          | (0.169)  |
+| N                           | 1800     | 1800     |
+| AIC                         | 1091.2   | 1016.9   |
+| BIC                         | 1113.2   | 1049.9   |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=0.206, df=1, p=0.6501
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=17.348, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=3.964, df=2, p=0.1378
+
+
+Standard errors in parentheses.
+* p<.05, ** p<.01, *** p<.001.
+

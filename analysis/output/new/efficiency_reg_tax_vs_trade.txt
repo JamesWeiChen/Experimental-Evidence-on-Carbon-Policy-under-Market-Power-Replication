@@ -1,0 +1,45 @@
+# A8b. Cross-firm misallocation loss and aggregate wedge: tax vs cap-and-trade at matched carbon prices (session-round)
+# cross_firm_loss = optimal production profit at the realised aggregate emissions - actual production profit (ECU);
+# aggregate_wedge_surplus = social optimum surplus - surplus at the realised aggregate emissions allocated optimally.
+# Hypotheses: trade - tax at carbon price 6 / 3 / 9.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): cross_firm_loss ~ is_trade + policy_rate_low + policy_rate_high + is_trade:policy_rate_low + is_trade:policy_rate_high + round
+N = 240, clusters (session_code) = 10, R2 = 0.450, bootstrap = webb (B = 9999)
+| term                      | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|---------------------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept                 | 31.617**  | (11.664)     |                 0.007 |                0.024 |                   0.005 |
+| is_trade                  | 87.453*** | (10.162)     |                 0     |                0     |                   0     |
+| policy_rate_low           | 9.570*    | (3.663)      |                 0.009 |                0.028 |                   0.019 |
+| policy_rate_high          | 20.356**  | (8.513)      |                 0.017 |                0.04  |                   0.01  |
+| is_trade:policy_rate_low  | -27.102*  | (13.308)     |                 0.042 |                0.072 |                   0.031 |
+| is_trade:policy_rate_high | -32.688*  | (15.098)     |                 0.03  |                0.059 |                   0.024 |
+| round                     | -3.257*   | (1.289)      |                 0.011 |                0.032 |                   0.018 |
+--- linear hypotheses ---
+| hypothesis                               |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_trade = 0                             |     87.453 | (10.162)     |                     0 |                0     |                   0     |
+| is_trade + is_trade:policy_rate_low = 0  |     60.35  | (8.760)      |                     0 |                0     |                   0     |
+| is_trade + is_trade:policy_rate_high = 0 |     54.765 | (11.381)     |                     0 |                0.001 |                   0.001 |
+
+=== Model (2): aggregate_wedge_surplus ~ is_trade + policy_rate_low + policy_rate_high + is_trade:policy_rate_low + is_trade:policy_rate_high + round
+N = 240, clusters (session_code) = 10, R2 = 0.438, bootstrap = webb (B = 9999)
+| term                      | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|---------------------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept                 | 11.032**  | (2.299)      |                 0     |                0.001 |                   0.001 |
+| is_trade                  | 10.541**  | (2.688)      |                 0     |                0.004 |                   0.002 |
+| policy_rate_low           | 7.403**   | (1.583)      |                 0     |                0.001 |                   0.002 |
+| policy_rate_high          | 35.740*** | (4.645)      |                 0     |                0     |                   0     |
+| is_trade:policy_rate_low  | -13.037** | (3.143)      |                 0     |                0.002 |                   0.002 |
+| is_trade:policy_rate_high | -10.819   | (5.641)      |                 0.055 |                0.087 |                   0.082 |
+| round                     | -0.990*   | (0.367)      |                 0.007 |                0.025 |                   0.011 |
+--- linear hypotheses ---
+| hypothesis                               |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_trade = 0                             |     10.541 | (2.688)      |                 0     |                0.004 |                   0.002 |
+| is_trade + is_trade:policy_rate_low = 0  |     -2.496 | (1.487)      |                 0.093 |                0.128 |                   0.12  |
+| is_trade + is_trade:policy_rate_high = 0 |     -0.278 | (4.254)      |                 0.948 |                0.949 |                   0.95  |
+

@@ -1,0 +1,26 @@
+# A8. Gains-from-trade index (rounds with potential gains >= 5% of the cap optimum)
+# See efficiency_reg.txt for definitions.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): efficiency_index ~ is_equal*(eq_price_low + eq_price_high) + round
+N = 48, clusters (session_code) = 9, R2 = 0.374, bootstrap = webb (B = 9999)
+| term                   | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept              | -2.026*** | (0.103)      |                 0     |                0     |                   0     |
+| is_equal               | -0.550    | (0.272)      |                 0.043 |                0.078 |                   0.21  |
+| eq_price_low           | 0.258     | (0.166)      |                 0.121 |                0.159 |                   0.178 |
+| eq_price_high          | -0.869*   | (0.217)      |                 0     |                0.004 |                   0.014 |
+| is_equal:eq_price_low  | 0.258     | (0.166)      |                 0.121 |                0.159 |                   0.178 |
+| is_equal:eq_price_high | 0.607     | (0.441)      |                 0.169 |                0.206 |                   0.213 |
+| round                  | 0.168*    | (0.047)      |                 0     |                0.007 |                   0.015 |
+--- linear hypotheses ---
+| hypothesis                                            | estimate   | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-------------------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_equal = 0                                          | -0.550     | (0.272)      |                 0.043 |                0.078 |                   0.21  |
+| is_equal + is_equal:eq_price_low = 0                  | -0.292     | (0.234)      |                 0.212 |                0.248 |                   0.509 |
+| is_equal + is_equal:eq_price_high = 0                 | 0.056      | (0.681)      |                 0.934 |                0.936 |                   0.95  |
+| is_equal:eq_price_low = 0, is_equal:eq_price_high = 0 | (joint)    |              |                 0.127 |                0.189 |                   0.034 |
+

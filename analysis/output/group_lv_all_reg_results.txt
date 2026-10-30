@@ -1,0 +1,231 @@
+=== Outcome: emission_diff | HC3 Robust SE ===
+     Y = emission_diff         (1)         (2)         (3)         (4)
+             Intercept   23.875***   -4.375***   -5.917***   -7.150***
+                           (0.223)     (0.159)     (0.345)     (0.390)
+                is_tax  -28.508***                                    
+                           (0.391)                                    
+              is_trade  -31.142***                                    
+                           (0.377)                                    
+          tax_rate_low               13.700***                        
+                                       (0.318)                        
+         tax_rate_high              -14.475***                        
+                                       (0.435)                        
+              is_equal                           -4.267***    -1.800**
+                                                   (0.377)     (0.604)
+          eq_price_low                           13.275***   16.100***
+                                                   (0.442)     (0.605)
+         eq_price_high                          -10.925***  -10.050***
+                                                   (0.467)     (0.593)
+ is_equal:eq_price_low                                       -5.650***
+                                                               (0.870)
+is_equal:eq_price_high                                          -1.750
+                                                               (0.929)
+                     N        5400        1800        1800        1800
+                   AIC     42276.1     12258.2     12594.6     12558.8
+                   BIC     42295.8     12274.7     12616.6     12591.7
+
+[Model 1] Wald test: is_tax == is_trade:  chi2=35.475, p=0.0000
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=3303.565, df=1, p=0.0000
+
+--- Extra effects for model (3) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=2584.888, df=1, p=0.0000
+
+--- Extra effects for model (4) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=1649.951, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=43.548, df=2, p=0.0000
+
+
+=== Outcome: emission_diff | Clustered SE (by session_code) ===
+     Y = emission_diff         (1)         (2)         (3)         (4)
+             Intercept   23.875***   -4.375***   -5.917***   -7.150***
+                           (1.178)     (0.685)     (1.651)     (1.934)
+                is_tax  -28.508***                                    
+                           (0.840)                                    
+              is_trade  -31.142***                                    
+                           (1.404)                                    
+          tax_rate_low               13.700***                        
+                                       (0.711)                        
+         tax_rate_high              -14.475***                        
+                                       (0.939)                        
+              is_equal                           -4.267***      -1.800
+                                                   (1.231)     (2.503)
+          eq_price_low                           13.275***   16.100***
+                                                   (1.859)     (2.224)
+         eq_price_high                          -10.925***  -10.050***
+                                                   (1.137)     (1.389)
+ is_equal:eq_price_low                                          -5.650
+                                                               (3.206)
+is_equal:eq_price_high                                          -1.750
+                                                               (2.199)
+                     N        5400        1800        1800        1800
+                   AIC     42276.1     12258.2     12594.6     12558.8
+                   BIC     42295.8     12274.7     12616.6     12591.7
+
+[Model 1] Wald test: is_tax == is_trade:  chi2=13.149, p=0.0003
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=536.556, df=1, p=0.0000
+
+--- Extra effects for model (3) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=545.423, df=1, p=0.0000
+
+--- Extra effects for model (4) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=732.374, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=5.873, df=2, p=0.0530
+
+
+=== Outcome: surplus_diff | HC3 Robust SE ===
+      Y = surplus_diff          (1)         (2)          (3)          (4)
+             Intercept  -107.452***  -16.796***  -111.849***  -121.607***
+                            (1.265)     (0.859)      (3.169)      (4.271)
+                is_tax    68.094***                                      
+                            (1.575)                                      
+              is_trade       -2.093                                      
+                            (1.836)                                      
+          tax_rate_low               -16.417***                          
+                                        (1.667)                          
+         tax_rate_high               -51.269***                          
+                                        (1.895)                          
+              is_equal                                -0.140    19.377***
+                                                     (2.573)      (5.098)
+          eq_price_low                             21.425***    35.238***
+                                                     (3.110)      (4.965)
+         eq_price_high                            -14.305***        1.157
+                                                     (3.444)      (4.746)
+ is_equal:eq_price_low                                         -27.628***
+                                                                  (6.167)
+is_equal:eq_price_high                                         -30.923***
+                                                                  (6.834)
+                     N         5400        1800         1800         1800
+                   AIC      57679.8     17755.8      19506.7      19481.3
+                   BIC      57699.6     17772.3      19528.7      19514.3
+
+[Model 1] Wald test: is_tax == is_trade:  chi2=1860.729, p=0.0000
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=248.283, df=1, p=0.0000
+
+--- Extra effects for model (3) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=154.749, df=1, p=0.0000
+
+--- Extra effects for model (4) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=108.570, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=25.080, df=2, p=0.0000
+
+
+=== Outcome: surplus_diff | Clustered SE (by session_code) ===
+      Y = surplus_diff          (1)         (2)          (3)          (4)
+             Intercept  -107.452***  -16.796***  -111.849***  -121.607***
+                            (9.106)     (4.145)      (8.084)     (12.245)
+                is_tax    68.094***                                      
+                            (6.417)                                      
+              is_trade       -2.093                                      
+                            (8.720)                                      
+          tax_rate_low                -16.417**                          
+                                        (5.455)                          
+         tax_rate_high               -51.269***                          
+                                        (6.272)                          
+              is_equal                                -0.140       19.377
+                                                    (11.194)     (17.436)
+          eq_price_low                                21.425       35.238
+                                                    (13.038)     (22.556)
+         eq_price_high                               -14.305        1.157
+                                                     (8.339)     (11.760)
+ is_equal:eq_price_low                                            -27.628
+                                                                 (24.406)
+is_equal:eq_price_high                                           -30.923*
+                                                                 (13.112)
+                     N         5400        1800         1800         1800
+                   AIC      57679.8     17755.8      19506.7      19481.3
+                   BIC      57699.6     17772.3      19528.7      19514.3
+
+[Model 1] Wald test: is_tax == is_trade:  chi2=110.457, p=0.0000
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=100.390, df=1, p=0.0000
+
+--- Extra effects for model (3) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=18.710, df=1, p=0.0000
+
+--- Extra effects for model (4) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=8.006, df=1, p=0.0047
+Wald test (interaction terms jointly zero): chi2=6.765, df=2, p=0.0340
+
+
+=== Outcome: production_diff | HC3 Robust SE ===
+   Y = production_diff         (1)         (2)        (3)        (4)
+             Intercept   16.658***   -3.200***  -6.942***  -8.150***
+                           (0.161)     (0.134)    (0.303)    (0.365)
+                is_tax  -20.275***                                  
+                           (0.284)                                  
+              is_trade  -22.600***                                  
+                           (0.283)                                  
+          tax_rate_low                9.175***                      
+                                       (0.267)                      
+         tax_rate_high              -10.425***                      
+                                       (0.346)                      
+              is_equal                            0.883**   3.300***
+                                                  (0.316)    (0.489)
+          eq_price_low                           9.700***  12.150***
+                                                  (0.363)    (0.518)
+         eq_price_high                          -8.025***  -6.850***
+                                                  (0.394)    (0.556)
+ is_equal:eq_price_low                                     -4.900***
+                                                             (0.713)
+is_equal:eq_price_high                                      -2.350**
+                                                             (0.782)
+                     N        5400        1800       1800       1800
+                   AIC     39055.7     11487.4    11958.5    11921.8
+                   BIC     39075.5     11503.8    11980.4    11954.7
+
+[Model 1] Wald test: is_tax == is_trade:  chi2=49.569, p=0.0000
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=2477.957, df=1, p=0.0000
+
+--- Extra effects for model (3) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=1932.006, df=1, p=0.0000
+
+--- Extra effects for model (4) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=1161.762, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=47.233, df=2, p=0.0000
+
+
+=== Outcome: production_diff | Clustered SE (by session_code) ===
+   Y = production_diff         (1)         (2)        (3)        (4)
+             Intercept   16.658***   -3.200***  -6.942***  -8.150***
+                           (0.724)     (0.594)    (1.288)    (1.388)
+                is_tax  -20.275***                                  
+                           (0.534)                                  
+              is_trade  -22.600***                                  
+                           (0.749)                                  
+          tax_rate_low                9.175***                      
+                                       (0.503)                      
+         tax_rate_high              -10.425***                      
+                                       (0.695)                      
+              is_equal                              0.883      3.300
+                                                  (1.303)    (1.757)
+          eq_price_low                           9.700***  12.150***
+                                                  (1.329)    (1.533)
+         eq_price_high                          -8.025***  -6.850***
+                                                  (0.793)    (0.978)
+ is_equal:eq_price_low                                       -4.900*
+                                                             (2.097)
+is_equal:eq_price_high                                        -2.350
+                                                             (1.380)
+                     N        5400        1800       1800       1800
+                   AIC     39055.7     11487.4    11958.5    11921.8
+                   BIC     39075.5     11503.8    11980.4    11954.7
+
+[Model 1] Wald test: is_tax == is_trade:  chi2=14.741, p=0.0001
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=445.482, df=1, p=0.0000
+
+--- Extra effects for model (3) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=499.125, df=1, p=0.0000
+
+--- Extra effects for model (4) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=712.081, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=5.493, df=2, p=0.0642
+
+
+Standard errors in parentheses.
+* p<.05, ** p<.01, *** p<.001.
+

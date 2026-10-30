@@ -1,0 +1,31 @@
+# A11/A12. Table 1 specification (all stages), rounds_7_12
+# emission_diff = emission - E_soc; surplus_diff = clean surplus - surplus_soc, as in the paper.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): emission_diff ~ is_tax + is_trade
+N = 2700, clusters (session_code) = 10, R2 = 0.577, bootstrap = webb (B = 9999)
+| term      | coef       | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-----------|------------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept | 23.717***  | (1.488)      |                     0 |                    0 |                       0 |
+| is_tax    | -29.667*** | (1.995)      |                     0 |                    0 |                       0 |
+| is_trade  | -28.533*** | (2.245)      |                     0 |                    0 |                       0 |
+--- linear hypotheses ---
+| hypothesis            |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-----------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_tax - is_trade = 0 |     -1.133 | (1.722)      |                 0.511 |                0.527 |                   0.556 |
+
+=== Model (2): surplus_diff ~ is_tax + is_trade
+N = 2700, clusters (session_code) = 10, R2 = 0.270, bootstrap = webb (B = 9999)
+| term      | coef       | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-----------|------------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept | -98.664*** | (10.272)     |                 0     |                0     |                   0     |
+| is_tax    | 60.752***  | (7.628)      |                 0     |                0     |                   0     |
+| is_trade  | 7.547      | (14.573)     |                 0.605 |                0.617 |                   0.609 |
+--- linear hypotheses ---
+| hypothesis            |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-----------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_tax - is_trade = 0 |     53.205 | (9.479)      |                     0 |                    0 |                       0 |
+

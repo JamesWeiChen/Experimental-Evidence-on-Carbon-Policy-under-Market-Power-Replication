@@ -1,0 +1,31 @@
+# A10. Trading-friction diagnostics (session-round level)
+# n_trades: executed trades per round (rounds without trades included as 0).
+# first_trade_sec / share_last30 / qty_mismatch_share_*: only rounds with the relevant events (see friction_diagnostics.csv).
+# qty_mismatch_share_bids: among incoming bids that crossed the best standing ask in the order-book replay, share with no equal-quantity ask (the strict quantity-matching friction); asks likewise.
+# Replay validity: replay_match_share in friction_diagnostics.csv = share of actual trades reproduced by the replay (same buyer, seller, quantity, price, within 2 s);
+# submitted_offers records posted limit orders only, so trades executed by accepting a standing order have no matching entry, and the replay is exploratory.
+# Fill rates in offers_summary.csv are executed trades / posted orders per side; values above 1 mean the side traded more often by accepting standing orders than by posting.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): n_trades ~ is_equal*(eq_price_low + eq_price_high) + round
+N = 120, clusters (session_code) = 10, R2 = 0.045, bootstrap = webb (B = 9999)
+| term                   | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept              | 17.305*** | (1.556)      |                 0     |                0     |                   0.001 |
+| is_equal               | -0.447    | (2.196)      |                 0.839 |                0.843 |                   0.851 |
+| eq_price_low           | -1.571    | (1.416)      |                 0.267 |                0.296 |                   0.479 |
+| eq_price_high          | -1.074    | (0.935)      |                 0.251 |                0.281 |                   0.329 |
+| is_equal:eq_price_low  | 2.813     | (1.601)      |                 0.079 |                0.113 |                   0.126 |
+| is_equal:eq_price_high | 1.379     | (1.790)      |                 0.441 |                0.461 |                   0.472 |
+| round                  | -0.211    | (0.120)      |                 0.077 |                0.111 |                   0.105 |
+--- linear hypotheses ---
+| hypothesis                                            | estimate   | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-------------------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_equal = 0                                          | -0.447     | (2.196)      |                 0.839 |                0.843 |                   0.851 |
+| is_equal + is_equal:eq_price_low = 0                  | 2.365      | (2.054)      |                 0.249 |                0.279 |                   0.296 |
+| is_equal + is_equal:eq_price_high = 0                 | 0.932      | (2.941)      |                 0.751 |                0.759 |                   0.753 |
+| is_equal:eq_price_low = 0, is_equal:eq_price_high = 0 | (joint)    |              |                 0.213 |                0.265 |                   0.092 |
+

@@ -1,0 +1,90 @@
+# A6. Volume gap: actual minus competitive net trade (firm-round)
+# Data: subj_lv_panel.csv, Carbon Trading rounds (150 firms x 12 rounds), competitive benchmarks at eq_price from
+# theory_benchmark_utils.compute_subject_theory_benchmark (realised cost draws). Standard errors clustered by session (10 clusters).
+# gap = net_trade - theory_net (permits; positive = bought more / sold less than the competitive benchmark);
+# abs_gap = |gap|; wrong_direction = 1 if the firm traded against the sign of its benchmark position (|theory_net| >= 1).
+# Hypotheses: dominant - small under grandfathering; dominant - small under equal allocation; difference of the two;
+# equal - grandfathering for small firms; equal - grandfathering for dominant firms.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): gap ~ is_dominant*is_equal + eq_price_low + eq_price_high + round
+N = 1800, clusters (session_code) = 10, R2 = 0.109, bootstrap = webb (B = 9999)
+| term                 | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept            | -0.265    | (0.110)      |                 0.016 |                0.04  |                   0.101 |
+| is_dominant          | 1.393     | (0.514)      |                 0.007 |                0.024 |                   0.083 |
+| is_equal             | 0.829**   | (0.161)      |                 0     |                0.001 |                   0.002 |
+| is_dominant:is_equal | -4.257*** | (0.712)      |                 0     |                0     |                   0.001 |
+| eq_price_low         | 0.022     | (0.019)      |                 0.262 |                0.291 |                   0.327 |
+| eq_price_high        | 0.025     | (0.027)      |                 0.36  |                0.384 |                   0.811 |
+| round                | 0.000     | (0.001)      |                 0.901 |                0.904 |                   0.954 |
+--- linear hypotheses ---
+| hypothesis                             |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_dominant = 0                        |      1.393 | (0.514)      |                 0.007 |                0.024 |                   0.083 |
+| is_dominant + is_dominant:is_equal = 0 |     -2.864 | (0.492)      |                 0     |                0     |                   0.027 |
+| is_dominant:is_equal = 0               |     -4.257 | (0.712)      |                 0     |                0     |                   0.001 |
+| is_equal = 0                           |      0.829 | (0.161)      |                 0     |                0.001 |                   0.002 |
+| is_equal + is_dominant:is_equal = 0    |     -3.428 | (0.553)      |                 0     |                0     |                   0.001 |
+
+=== Model (2): gap ~ is_dominant*is_equal*(eq_price_low + eq_price_high) + round
+N = 1800, clusters (session_code) = 10, R2 = 0.127, bootstrap = webb (B = 9999)
+| term                               | coef     | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------------------|----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept                          | -0.226   | (0.171)      |                 0.186 |                0.219 |                   0.263 |
+| is_dominant                        | 1.125    | (0.877)      |                 0.199 |                0.231 |                   0.277 |
+| is_equal                           | 0.854**  | (0.226)      |                 0     |                0.004 |                   0.004 |
+| is_dominant:is_equal               | -4.237** | (1.134)      |                 0     |                0.005 |                   0.004 |
+| eq_price_low                       | 0.071    | (0.128)      |                 0.579 |                0.593 |                   0.664 |
+| eq_price_high                      | -0.142   | (0.066)      |                 0.033 |                0.061 |                   0.144 |
+| is_dominant:eq_price_low           | -0.171   | (0.744)      |                 0.818 |                0.823 |                   0.825 |
+| is_dominant:eq_price_high          | 0.975    | (0.434)      |                 0.025 |                0.051 |                   0.139 |
+| is_equal:eq_price_low              | 0.150    | (0.209)      |                 0.472 |                0.491 |                   0.505 |
+| is_equal:eq_price_high             | -0.225   | (0.147)      |                 0.127 |                0.161 |                   0.195 |
+| is_dominant:is_equal:eq_price_low  | -0.900   | (1.124)      |                 0.423 |                0.444 |                   0.455 |
+| is_dominant:is_equal:eq_price_high | 0.842    | (0.789)      |                 0.286 |                0.314 |                   0.341 |
+| round                              | 0.000    | (0.001)      |                 0.926 |                0.928 |                   0.94  |
+
+=== Model (3): abs_gap ~ is_dominant*is_equal + eq_price_low + eq_price_high + round
+N = 1800, clusters (session_code) = 10, R2 = 0.125, bootstrap = webb (B = 9999)
+| term                 | coef     | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------|----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept            | 2.165*** | (0.191)      |                 0     |                0     |                   0     |
+| is_dominant          | 1.090*   | (0.183)      |                 0     |                0     |                   0.024 |
+| is_equal             | 0.265    | (0.143)      |                 0.063 |                0.096 |                   0.092 |
+| is_dominant:is_equal | 0.618    | (0.451)      |                 0.17  |                0.203 |                   0.233 |
+| eq_price_low         | -0.026   | (0.177)      |                 0.883 |                0.886 |                   0.895 |
+| eq_price_high        | -0.364** | (0.108)      |                 0.001 |                0.008 |                   0.006 |
+| round                | -0.081** | (0.019)      |                 0     |                0.002 |                   0.005 |
+--- linear hypotheses ---
+| hypothesis                             |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_dominant = 0                        |      1.09  | (0.183)      |                 0     |                0     |                   0.024 |
+| is_dominant + is_dominant:is_equal = 0 |      1.708 | (0.412)      |                 0     |                0.002 |                   0.021 |
+| is_dominant:is_equal = 0               |      0.618 | (0.451)      |                 0.17  |                0.203 |                   0.233 |
+| is_equal = 0                           |      0.265 | (0.143)      |                 0.063 |                0.096 |                   0.092 |
+| is_equal + is_dominant:is_equal = 0    |      0.883 | (0.405)      |                 0.029 |                0.057 |                   0.073 |
+
+=== Model (4): wrong_direction ~ is_dominant*is_equal + eq_price_low + eq_price_high + round
+N = 1800, clusters (session_code) = 10, R2 = 0.022, bootstrap = webb (B = 9999)
+| term                 | coef     | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------|----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept            | 0.231*** | (0.023)      |                 0     |                0     |                   0     |
+| is_dominant          | 0.126    | (0.045)      |                 0.005 |                0.02  |                   0.072 |
+| is_equal             | 0.028    | (0.019)      |                 0.141 |                0.175 |                   0.202 |
+| is_dominant:is_equal | -0.022   | (0.074)      |                 0.764 |                0.771 |                   0.776 |
+| eq_price_low         | -0.035   | (0.028)      |                 0.206 |                0.238 |                   0.225 |
+| eq_price_high        | -0.037   | (0.028)      |                 0.188 |                0.221 |                   0.224 |
+| round                | -0.009** | (0.002)      |                 0     |                0.003 |                   0.003 |
+--- linear hypotheses ---
+| hypothesis                             |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_dominant = 0                        |      0.126 | (0.045)      |                 0.005 |                0.02  |                   0.072 |
+| is_dominant + is_dominant:is_equal = 0 |      0.104 | (0.059)      |                 0.076 |                0.11  |                   0.205 |
+| is_dominant:is_equal = 0               |     -0.022 | (0.074)      |                 0.764 |                0.771 |                   0.776 |
+| is_equal = 0                           |      0.028 | (0.019)      |                 0.141 |                0.175 |                   0.202 |
+| is_equal + is_dominant:is_equal = 0    |      0.006 | (0.071)      |                 0.938 |                0.939 |                   0.945 |
+

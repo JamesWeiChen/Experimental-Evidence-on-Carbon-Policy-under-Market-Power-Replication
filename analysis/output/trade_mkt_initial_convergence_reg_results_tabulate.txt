@@ -1,0 +1,219 @@
+=== Outcome: gap_closed_pct | HC3 Robust SE ===
+| Y = gap_closed_pct                         | (1)       | (2)       | (3)       |
+|--------------------------------------------|-----------|-----------|-----------|
+| Intercept                                  | -0.442*** | -0.503*** | -0.510*** |
+|                                            | (0.044)   | (0.048)   | (0.052)   |
+| initial_abs_price_diff_z                   | 0.266***  | 0.250***  | 0.250***  |
+|                                            | (0.023)   | (0.024)   | (0.023)   |
+| post_initial_mins                          | 0.186***  | 0.265***  | 0.275***  |
+|                                            | (0.030)   | (0.039)   | (0.042)   |
+| initial_abs_price_diff_z:post_initial_mins | -0.039    | -0.017    | -0.018    |
+|                                            | (0.021)   | (0.023)   | (0.022)   |
+| is_equal                                   | -0.136*** | -0.013    | -0.013    |
+|                                            | (0.030)   | (0.055)   | (0.055)   |
+| eq_price_low                               | -0.050    | -0.051*   | -0.040    |
+|                                            | (0.026)   | (0.026)   | (0.051)   |
+| eq_price_high                              | -0.144*** | -0.146*** | -0.135*   |
+|                                            | (0.031)   | (0.031)   | (0.064)   |
+| round                                      | 0.087***  | 0.087***  | 0.087***  |
+|                                            | (0.006)   | (0.006)   | (0.006)   |
+| is_equal:post_initial_mins                 |           | -0.159*   | -0.158*   |
+|                                            |           | (0.062)   | (0.062)   |
+| eq_price_low:post_initial_mins             |           |           | -0.014    |
+|                                            |           |           | (0.058)   |
+| eq_price_high:post_initial_mins            |           |           | -0.014    |
+|                                            |           |           | (0.072)   |
+| N                                          | 1444      | 1444      | 1444      |
+| AIC                                        | 2123.4    | 2117.6    | 2121.5    |
+| BIC                                        | 2165.6    | 2165.1    | 2179.5    |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+
+--- Initial Price Convergence Tests (initial absolute price gap) ---
+Time slope when initial absolute price gap is average (z=0): coef=0.186, SE=0.030, t=6.169, p=0.000
+Time slope when initial absolute price gap is high (z=+1): coef=0.147, SE=0.030, t=4.874, p=0.000
+Time slope when initial absolute price gap is low (z=-1): coef=0.224, SE=0.043, t=5.255, p=0.000
+Wald test - initial price affects convergence speed: chi2=3.271, p=0.070
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+
+--- Initial Price Convergence Tests (initial absolute price gap) ---
+Time slope when initial absolute price gap is average (z=0): coef=0.265, SE=0.039, t=6.834, p=0.000
+Time slope when initial absolute price gap is high (z=+1): coef=0.248, SE=0.044, t=5.666, p=0.000
+Time slope when initial absolute price gap is low (z=-1): coef=0.282, SE=0.046, t=6.112, p=0.000
+Wald test - initial price affects convergence speed: chi2=0.569, p=0.451
+
+--- Extra effects for model (3) (HC3 Robust SE) ---
+
+--- Initial Price Convergence Tests (initial absolute price gap) ---
+Time slope when initial absolute price gap is average (z=0): coef=0.275, SE=0.042, t=6.602, p=0.000
+Time slope when initial absolute price gap is high (z=+1): coef=0.257, SE=0.048, t=5.326, p=0.000
+Time slope when initial absolute price gap is low (z=-1): coef=0.293, SE=0.046, t=6.382, p=0.000
+Wald test - initial price affects convergence speed: chi2=0.661, p=0.416
+
+
+=== Outcome: gap_closed_pct | Clustered SE (by session_code) ===
+| Y = gap_closed_pct                         | (1)       | (2)       | (3)       |
+|--------------------------------------------|-----------|-----------|-----------|
+| Intercept                                  | -0.442*** | -0.503*** | -0.510*** |
+|                                            | (0.115)   | (0.095)   | (0.092)   |
+| initial_abs_price_diff_z                   | 0.266***  | 0.250***  | 0.250***  |
+|                                            | (0.051)   | (0.058)   | (0.058)   |
+| post_initial_mins                          | 0.186**   | 0.265***  | 0.275***  |
+|                                            | (0.061)   | (0.069)   | (0.061)   |
+| initial_abs_price_diff_z:post_initial_mins | -0.039    | -0.017    | -0.018    |
+|                                            | (0.027)   | (0.032)   | (0.030)   |
+| is_equal                                   | -0.136    | -0.013    | -0.013    |
+|                                            | (0.080)   | (0.072)   | (0.071)   |
+| eq_price_low                               | -0.050    | -0.051    | -0.040    |
+|                                            | (0.040)   | (0.040)   | (0.065)   |
+| eq_price_high                              | -0.144    | -0.146    | -0.135    |
+|                                            | (0.078)   | (0.077)   | (0.096)   |
+| round                                      | 0.087***  | 0.087***  | 0.087***  |
+|                                            | (0.015)   | (0.015)   | (0.015)   |
+| is_equal:post_initial_mins                 |           | -0.159    | -0.158    |
+|                                            |           | (0.113)   | (0.112)   |
+| eq_price_low:post_initial_mins             |           |           | -0.014    |
+|                                            |           |           | (0.056)   |
+| eq_price_high:post_initial_mins            |           |           | -0.014    |
+|                                            |           |           | (0.084)   |
+| N                                          | 1444      | 1444      | 1444      |
+| AIC                                        | 2123.4    | 2117.6    | 2121.5    |
+| BIC                                        | 2165.6    | 2165.1    | 2179.5    |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+
+--- Initial Price Convergence Tests (initial absolute price gap) ---
+Time slope when initial absolute price gap is average (z=0): coef=0.186, SE=0.061, t=3.019, p=0.003
+Time slope when initial absolute price gap is high (z=+1): coef=0.147, SE=0.036, t=4.072, p=0.000
+Time slope when initial absolute price gap is low (z=-1): coef=0.224, SE=0.088, t=2.547, p=0.011
+Wald test - initial price affects convergence speed: chi2=2.003, p=0.157
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+
+--- Initial Price Convergence Tests (initial absolute price gap) ---
+Time slope when initial absolute price gap is average (z=0): coef=0.265, SE=0.069, t=3.852, p=0.000
+Time slope when initial absolute price gap is high (z=+1): coef=0.248, SE=0.068, t=3.647, p=0.000
+Time slope when initial absolute price gap is low (z=-1): coef=0.282, SE=0.083, t=3.409, p=0.001
+Wald test - initial price affects convergence speed: chi2=0.295, p=0.587
+
+--- Extra effects for model (3) (Clustered SE (by session_code)) ---
+
+--- Initial Price Convergence Tests (initial absolute price gap) ---
+Time slope when initial absolute price gap is average (z=0): coef=0.275, SE=0.061, t=4.495, p=0.000
+Time slope when initial absolute price gap is high (z=+1): coef=0.257, SE=0.073, t=3.538, p=0.000
+Time slope when initial absolute price gap is low (z=-1): coef=0.293, SE=0.063, t=4.643, p=0.000
+Wald test - initial price affects convergence speed: chi2=0.359, p=0.549
+
+
+=== Outcome: log_remaining_gap_ratio | HC3 Robust SE ===
+| Y = log_remaining_gap_ratio                | (1)       | (2)       | (3)       |
+|--------------------------------------------|-----------|-----------|-----------|
+| Intercept                                  | 0.477***  | 0.570***  | 0.581***  |
+|                                            | (0.051)   | (0.061)   | (0.064)   |
+| initial_abs_price_diff_z                   | -0.324*** | -0.299*** | -0.299*** |
+|                                            | (0.027)   | (0.027)   | (0.027)   |
+| post_initial_mins                          | -0.342*** | -0.463*** | -0.479*** |
+|                                            | (0.036)   | (0.055)   | (0.063)   |
+| initial_abs_price_diff_z:post_initial_mins | 0.009     | -0.024    | -0.024    |
+|                                            | (0.028)   | (0.030)   | (0.030)   |
+| is_equal                                   | 0.184***  | -0.004    | -0.004    |
+|                                            | (0.033)   | (0.062)   | (0.062)   |
+| eq_price_low                               | 0.004     | 0.007     | -0.018    |
+|                                            | (0.035)   | (0.035)   | (0.068)   |
+| eq_price_high                              | -0.000    | 0.003     | -0.008    |
+|                                            | (0.039)   | (0.039)   | (0.072)   |
+| round                                      | -0.100*** | -0.100*** | -0.100*** |
+|                                            | (0.005)   | (0.005)   | (0.006)   |
+| is_equal:post_initial_mins                 |           | 0.243**   | 0.242**   |
+|                                            |           | (0.075)   | (0.075)   |
+| eq_price_low:post_initial_mins             |           |           | 0.032     |
+|                                            |           |           | (0.079)   |
+| eq_price_high:post_initial_mins            |           |           | 0.014     |
+|                                            |           |           | (0.088)   |
+| N                                          | 1444      | 1444      | 1444      |
+| AIC                                        | 2567.7    | 2556.2    | 2560.0    |
+| BIC                                        | 2609.9    | 2603.7    | 2618.0    |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+
+--- Initial Price Convergence Tests (initial absolute price gap) ---
+Time slope when initial absolute price gap is average (z=0): coef=-0.342, SE=0.036, t=-9.502, p=0.000
+Time slope when initial absolute price gap is high (z=+1): coef=-0.333, SE=0.038, t=-8.721, p=0.000
+Time slope when initial absolute price gap is low (z=-1): coef=-0.350, SE=0.052, t=-6.733, p=0.000
+Wald test - initial price affects convergence speed: chi2=0.100, p=0.752
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+
+--- Initial Price Convergence Tests (initial absolute price gap) ---
+Time slope when initial absolute price gap is average (z=0): coef=-0.463, SE=0.055, t=-8.452, p=0.000
+Time slope when initial absolute price gap is high (z=+1): coef=-0.487, SE=0.064, t=-7.647, p=0.000
+Time slope when initial absolute price gap is low (z=-1): coef=-0.439, SE=0.061, t=-7.203, p=0.000
+Wald test - initial price affects convergence speed: chi2=0.660, p=0.417
+
+--- Extra effects for model (3) (HC3 Robust SE) ---
+
+--- Initial Price Convergence Tests (initial absolute price gap) ---
+Time slope when initial absolute price gap is average (z=0): coef=-0.479, SE=0.063, t=-7.628, p=0.000
+Time slope when initial absolute price gap is high (z=+1): coef=-0.502, SE=0.069, t=-7.228, p=0.000
+Time slope when initial absolute price gap is low (z=-1): coef=-0.455, SE=0.069, t=-6.566, p=0.000
+Wald test - initial price affects convergence speed: chi2=0.637, p=0.425
+
+
+=== Outcome: log_remaining_gap_ratio | Clustered SE (by session_code) ===
+| Y = log_remaining_gap_ratio                | (1)       | (2)       | (3)       |
+|--------------------------------------------|-----------|-----------|-----------|
+| Intercept                                  | 0.477***  | 0.570***  | 0.581***  |
+|                                            | (0.106)   | (0.089)   | (0.083)   |
+| initial_abs_price_diff_z                   | -0.324*** | -0.299*** | -0.299*** |
+|                                            | (0.043)   | (0.044)   | (0.042)   |
+| post_initial_mins                          | -0.342*** | -0.463*** | -0.479*** |
+|                                            | (0.079)   | (0.111)   | (0.097)   |
+| initial_abs_price_diff_z:post_initial_mins | 0.009     | -0.024    | -0.024    |
+|                                            | (0.042)   | (0.045)   | (0.041)   |
+| is_equal                                   | 0.184     | -0.004    | -0.004    |
+|                                            | (0.116)   | (0.068)   | (0.068)   |
+| eq_price_low                               | 0.004     | 0.007     | -0.018    |
+|                                            | (0.062)   | (0.063)   | (0.090)   |
+| eq_price_high                              | -0.000    | 0.003     | -0.008    |
+|                                            | (0.078)   | (0.077)   | (0.108)   |
+| round                                      | -0.100*** | -0.100*** | -0.100*** |
+|                                            | (0.012)   | (0.012)   | (0.012)   |
+| is_equal:post_initial_mins                 |           | 0.243     | 0.242     |
+|                                            |           | (0.138)   | (0.138)   |
+| eq_price_low:post_initial_mins             |           |           | 0.032     |
+|                                            |           |           | (0.073)   |
+| eq_price_high:post_initial_mins            |           |           | 0.014     |
+|                                            |           |           | (0.083)   |
+| N                                          | 1444      | 1444      | 1444      |
+| AIC                                        | 2567.7    | 2556.2    | 2560.0    |
+| BIC                                        | 2609.9    | 2603.7    | 2618.0    |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+
+--- Initial Price Convergence Tests (initial absolute price gap) ---
+Time slope when initial absolute price gap is average (z=0): coef=-0.342, SE=0.079, t=-4.309, p=0.000
+Time slope when initial absolute price gap is high (z=+1): coef=-0.333, SE=0.046, t=-7.297, p=0.000
+Time slope when initial absolute price gap is low (z=-1): coef=-0.350, SE=0.119, t=-2.954, p=0.003
+Wald test - initial price affects convergence speed: chi2=0.044, p=0.834
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+
+--- Initial Price Convergence Tests (initial absolute price gap) ---
+Time slope when initial absolute price gap is average (z=0): coef=-0.463, SE=0.111, t=-4.159, p=0.000
+Time slope when initial absolute price gap is high (z=+1): coef=-0.487, SE=0.111, t=-4.386, p=0.000
+Time slope when initial absolute price gap is low (z=-1): coef=-0.439, SE=0.128, t=-3.426, p=0.001
+Wald test - initial price affects convergence speed: chi2=0.295, p=0.587
+
+--- Extra effects for model (3) (Clustered SE (by session_code)) ---
+
+--- Initial Price Convergence Tests (initial absolute price gap) ---
+Time slope when initial absolute price gap is average (z=0): coef=-0.479, SE=0.097, t=-4.922, p=0.000
+Time slope when initial absolute price gap is high (z=+1): coef=-0.502, SE=0.105, t=-4.803, p=0.000
+Time slope when initial absolute price gap is low (z=-1): coef=-0.455, SE=0.106, t=-4.277, p=0.000
+Wald test - initial price affects convergence speed: chi2=0.335, p=0.563
+
+
+Standard errors in parentheses.
+* p<.05, ** p<.01, *** p<.001.
+

@@ -1,0 +1,31 @@
+# A6b. Share of the competitive net trade realised (firm-rounds with |theory_net| >= 1)
+# Data: subj_lv_panel.csv, Carbon Trading rounds (150 firms x 12 rounds), competitive benchmarks at eq_price from
+# theory_benchmark_utils.compute_subject_theory_benchmark (realised cost draws). Standard errors clustered by session (10 clusters).
+# share_realised = net_trade / theory_net (1 = exactly the competitive volume; 0 = no trade; negative = wrong direction).
+# Hypotheses: dominant - small under grandfathering; dominant - small under equal allocation; difference of the two;
+# equal - grandfathering for small firms; equal - grandfathering for dominant firms.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): share_realised ~ is_dominant*is_equal + eq_price_low + eq_price_high + round
+N = 1143, clusters (session_code) = 10, R2 = 0.004, bootstrap = webb (B = 9999)
+| term                 |   coef | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------|--------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept            |  0.121 | (0.196)      |                 0.535 |                0.551 |                   0.578 |
+| is_dominant          |  0.128 | (0.211)      |                 0.545 |                0.56  |                   0.589 |
+| is_equal             |  0.11  | (0.123)      |                 0.372 |                0.395 |                   0.42  |
+| is_dominant:is_equal | -0.201 | (0.253)      |                 0.426 |                0.447 |                   0.477 |
+| eq_price_low         | -0.053 | (0.149)      |                 0.72  |                0.729 |                   0.718 |
+| eq_price_high        | -0.093 | (0.122)      |                 0.443 |                0.462 |                   0.487 |
+| round                |  0.03  | (0.015)      |                 0.049 |                0.08  |                   0.098 |
+--- linear hypotheses ---
+| hypothesis                             |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_dominant = 0                        |      0.128 | (0.211)      |                 0.545 |                0.56  |                   0.589 |
+| is_dominant + is_dominant:is_equal = 0 |     -0.074 | (0.138)      |                 0.593 |                0.606 |                   0.651 |
+| is_dominant:is_equal = 0               |     -0.201 | (0.253)      |                 0.426 |                0.447 |                   0.477 |
+| is_equal = 0                           |      0.11  | (0.123)      |                 0.372 |                0.395 |                   0.42  |
+| is_equal + is_dominant:is_equal = 0    |     -0.092 | (0.355)      |                 0.796 |                0.802 |                   0.816 |
+

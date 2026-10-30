@@ -1,0 +1,45 @@
+# A10. Dominant firms' bid fill rates (player-round level, rounds in which the firm submitted at least one bid)
+# fill_rate_bids = executed purchases / submitted bids; fill_rate_bid_qty = quantity bought / quantity bid.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): fill_rate_bids ~ is_equal*(eq_price_low + eq_price_high) + round
+N = 184, clusters (session_code) = 10, R2 = 0.062, bootstrap = webb (B = 9999)
+| term                   |   coef | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------|--------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept              |  0.54  | (0.351)      |                 0.124 |                0.159 |                   0.216 |
+| is_equal               |  0.492 | (0.295)      |                 0.096 |                0.13  |                   0.183 |
+| eq_price_low           |  0.388 | (0.280)      |                 0.166 |                0.199 |                   0.25  |
+| eq_price_high          | -0.16  | (0.326)      |                 0.622 |                0.634 |                   0.636 |
+| is_equal:eq_price_low  | -0.307 | (0.350)      |                 0.381 |                0.403 |                   0.427 |
+| is_equal:eq_price_high | -0.238 | (0.357)      |                 0.505 |                0.522 |                   0.526 |
+| round                  |  0.032 | (0.035)      |                 0.356 |                0.381 |                   0.488 |
+--- linear hypotheses ---
+| hypothesis                                            | estimate   | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-------------------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_equal = 0                                          | 0.492      | (0.295)      |                 0.096 |                0.13  |                   0.183 |
+| is_equal + is_equal:eq_price_low = 0                  | 0.185      | (0.411)      |                 0.652 |                0.662 |                   0.684 |
+| is_equal + is_equal:eq_price_high = 0                 | 0.254      | (0.255)      |                 0.319 |                0.345 |                   0.399 |
+| is_equal:eq_price_low = 0, is_equal:eq_price_high = 0 | (joint)    |              |                 0.565 |                0.585 |                   0.488 |
+
+=== Model (2): fill_rate_bid_qty ~ is_equal*(eq_price_low + eq_price_high) + round
+N = 184, clusters (session_code) = 10, R2 = 0.050, bootstrap = webb (B = 9999)
+| term                   |   coef | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------|--------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept              |  0.622 | (0.372)      |                 0.094 |                0.129 |                   0.18  |
+| is_equal               |  0.088 | (0.262)      |                 0.737 |                0.745 |                   0.762 |
+| eq_price_low           |  0.646 | (0.498)      |                 0.195 |                0.227 |                   0.208 |
+| eq_price_high          | -0.281 | (0.302)      |                 0.351 |                0.376 |                   0.368 |
+| is_equal:eq_price_low  | -0.216 | (0.554)      |                 0.697 |                0.706 |                   0.773 |
+| is_equal:eq_price_high |  0.24  | (0.349)      |                 0.492 |                0.509 |                   0.52  |
+| round                  |  0.025 | (0.036)      |                 0.479 |                0.497 |                   0.564 |
+--- linear hypotheses ---
+| hypothesis                                            | estimate   | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-------------------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_equal = 0                                          | 0.088      | (0.262)      |                 0.737 |                0.745 |                   0.762 |
+| is_equal + is_equal:eq_price_low = 0                  | -0.127     | (0.656)      |                 0.846 |                0.85  |                   0.893 |
+| is_equal + is_equal:eq_price_high = 0                 | 0.328      | (0.306)      |                 0.284 |                0.312 |                   0.402 |
+| is_equal:eq_price_low = 0, is_equal:eq_price_high = 0 | (joint)    |              |                 0.777 |                0.783 |                   0.769 |
+

@@ -1,0 +1,7 @@
+﻿allocation,eq_price,dominant_with_shortfall_pct,avg_dominant_shortfall,unused_per_market,unused_held_by_small,unused_pct_of_cap
+grandfathering,3,31.7,0.83,6.7,5.2,8.83
+grandfathering,6,28.3,0.82,7.15,6.45,10.73
+grandfathering,9,21.7,0.53,3.0,2.4,7.07
+equal,3,75.0,3.8,13.5,12.7,17.76
+equal,6,66.7,3.08,9.05,8.3,13.04
+equal,9,63.3,1.77,5.9,4.6,12.46

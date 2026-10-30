@@ -1,0 +1,65 @@
+# A4b. Opening, closing and quantity-weighted average price deviation per session-round (all trades)
+# Unit: session-round with at least one trade. open/close = first/last executed trade of the round; vwap = quantity-weighted mean.
+# Outcome is the deviation from eq_price.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): open_diff ~ is_equal*(eq_price_low + eq_price_high) + round
+N = 120, clusters (session_code) = 10, R2 = 0.202, bootstrap = webb (B = 9999)
+| term                   | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept              | 31.309*** | (3.032)      |                 0     |                0     |                   0     |
+| is_equal               | 4.018     | (4.169)      |                 0.335 |                0.36  |                   0.446 |
+| eq_price_low           | -0.167    | (1.454)      |                 0.909 |                0.911 |                   0.885 |
+| eq_price_high          | -3.585    | (3.243)      |                 0.269 |                0.298 |                   0.361 |
+| is_equal:eq_price_low  | 0.614     | (1.974)      |                 0.756 |                0.763 |                   0.796 |
+| is_equal:eq_price_high | 1.183     | (6.004)      |                 0.844 |                0.848 |                   0.85  |
+| round                  | -1.671**  | (0.495)      |                 0.001 |                0.008 |                   0.009 |
+--- linear hypotheses ---
+| hypothesis                                            | estimate   | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-------------------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_equal = 0                                          | 4.018      | (4.169)      |                 0.335 |                0.36  |                   0.446 |
+| is_equal + is_equal:eq_price_low = 0                  | 4.632      | (4.436)      |                 0.296 |                0.324 |                   0.39  |
+| is_equal + is_equal:eq_price_high = 0                 | 5.201      | (4.104)      |                 0.205 |                0.237 |                   0.268 |
+| is_equal:eq_price_low = 0, is_equal:eq_price_high = 0 | (joint)    |              |                 0.923 |                0.924 |                   0.917 |
+
+=== Model (2): close_diff ~ is_equal*(eq_price_low + eq_price_high) + round
+N = 120, clusters (session_code) = 10, R2 = 0.426, bootstrap = webb (B = 9999)
+| term                   | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept              | 30.637*** | (2.798)      |                 0     |                0     |                   0     |
+| is_equal               | 1.852     | (3.138)      |                 0.555 |                0.57  |                   0.574 |
+| eq_price_low           | -4.561    | (2.693)      |                 0.09  |                0.125 |                   0.187 |
+| eq_price_high          | -2.512    | (1.644)      |                 0.126 |                0.161 |                   0.22  |
+| is_equal:eq_price_low  | 8.205*    | (3.390)      |                 0.015 |                0.039 |                   0.049 |
+| is_equal:eq_price_high | 3.889     | (4.494)      |                 0.387 |                0.409 |                   0.477 |
+| round                  | -2.607*** | (0.349)      |                 0     |                0     |                   0     |
+--- linear hypotheses ---
+| hypothesis                                            | estimate   | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-------------------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_equal = 0                                          | 1.852      | (3.138)      |                 0.555 |                0.57  |                   0.574 |
+| is_equal + is_equal:eq_price_low = 0                  | 10.057     | (4.344)      |                 0.021 |                0.046 |                   0.024 |
+| is_equal + is_equal:eq_price_high = 0                 | 5.741      | (4.375)      |                 0.189 |                0.222 |                   0.242 |
+| is_equal:eq_price_low = 0, is_equal:eq_price_high = 0 | (joint)    |              |                 0.012 |                0.046 |                   0.01  |
+
+=== Model (3): vwap_diff ~ is_equal*(eq_price_low + eq_price_high) + round
+N = 120, clusters (session_code) = 10, R2 = 0.587, bootstrap = webb (B = 9999)
+| term                   | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept              | 34.186*** | (2.721)      |                 0     |                0     |                   0     |
+| is_equal               | 2.269     | (3.072)      |                 0.46  |                0.479 |                   0.488 |
+| eq_price_low           | -1.709    | (1.674)      |                 0.307 |                0.334 |                   0.358 |
+| eq_price_high          | -3.315    | (1.805)      |                 0.066 |                0.099 |                   0.174 |
+| is_equal:eq_price_low  | 3.999     | (2.392)      |                 0.095 |                0.129 |                   0.139 |
+| is_equal:eq_price_high | 6.708     | (3.768)      |                 0.075 |                0.109 |                   0.116 |
+| round                  | -2.527*** | (0.408)      |                 0     |                0     |                   0     |
+--- linear hypotheses ---
+| hypothesis                                            | estimate   | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-------------------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_equal = 0                                          | 2.269      | (3.072)      |                 0.46  |                0.479 |                   0.488 |
+| is_equal + is_equal:eq_price_low = 0                  | 6.268      | (4.102)      |                 0.127 |                0.161 |                   0.161 |
+| is_equal + is_equal:eq_price_high = 0                 | 8.977      | (2.429)      |                 0     |                0.005 |                   0.008 |
+| is_equal:eq_price_low = 0, is_equal:eq_price_high = 0 | (joint)    |              |                 0.122 |                0.178 |                   0.042 |
+

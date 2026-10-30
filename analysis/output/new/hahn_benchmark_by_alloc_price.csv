@@ -1,0 +1,7 @@
+﻿allocation,eq_price,cells,mean_cap,mean_comp_coalition_net_purchase,mean_hahn_coalition_net_purchase,mean_hahn_price_minus_comp,cells_price_below_comp,cells_price_above_comp,mean_hahn_unused_permits,mean_surplus_loss_vs_comp
+equal,3,4,84.0,16.2,12.0,-1.0,2,0,4.5,-10.5
+equal,6,4,72.0,9.6,4.0,-3.25,4,0,3.0,21.75
+equal,9,4,54.0,4.2,0.25,-0.5,3,1,1.5,13.5
+grandfathering,3,4,84.0,-0.6000000000000039,-0.25,2.5,0,3,3.0,9.0
+grandfathering,6,4,72.0,-4.800000000000001,-4.25,2.0,0,3,0.0,0.0
+grandfathering,9,4,54.0,-6.600000000000003,-6.25,3.0,0,4,0.0,0.0

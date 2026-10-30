@@ -1,0 +1,26 @@
+# A10. first_trade_sec (session-round level)
+# See friction_reg.txt header for definitions.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): first_trade_sec ~ is_equal*(eq_price_low + eq_price_high) + round
+N = 120, clusters (session_code) = 10, R2 = 0.191, bootstrap = webb (B = 9999)
+| term                   | coef     | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------|----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept              | 16.960** | (2.923)      |                 0     |                0     |                   0.003 |
+| is_equal               | 5.779    | (3.120)      |                 0.064 |                0.097 |                   0.109 |
+| eq_price_low           | -0.572   | (1.279)      |                 0.655 |                0.666 |                   0.706 |
+| eq_price_high          | -0.001   | (1.154)      |                 1     |                1     |                   1     |
+| is_equal:eq_price_low  | -1.265   | (1.772)      |                 0.475 |                0.493 |                   0.511 |
+| is_equal:eq_price_high | -3.272*  | (1.391)      |                 0.019 |                0.043 |                   0.026 |
+| round                  | -0.716** | (0.216)      |                 0.001 |                0.009 |                   0.008 |
+--- linear hypotheses ---
+| hypothesis                                            | estimate   | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-------------------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_equal = 0                                          | 5.779      | (3.120)      |                 0.064 |                0.097 |                   0.109 |
+| is_equal + is_equal:eq_price_low = 0                  | 4.514      | (2.722)      |                 0.097 |                0.132 |                   0.154 |
+| is_equal + is_equal:eq_price_high = 0                 | 2.507      | (3.568)      |                 0.482 |                0.5   |                   0.507 |
+| is_equal:eq_price_low = 0, is_equal:eq_price_high = 0 | (joint)    |              |                 0.054 |                0.106 |                   0.033 |
+

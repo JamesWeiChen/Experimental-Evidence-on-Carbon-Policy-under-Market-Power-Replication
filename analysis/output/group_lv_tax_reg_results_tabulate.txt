@@ -1,0 +1,311 @@
+=== Outcome: emission_diff | HC3 Robust SE ===
+| Y = emission_diff   | (1)        | (2)        |
+|---------------------|------------|------------|
+| Intercept           | -4.375***  | -4.162***  |
+|                     | (0.159)    | (0.364)    |
+| tax_rate_low        | 13.700***  | 13.701***  |
+|                     | (0.318)    | (0.318)    |
+| tax_rate_high       | -14.475*** | -14.434*** |
+|                     | (0.435)    | (0.439)    |
+| round               |            | -0.035     |
+|                     |            | (0.049)    |
+| N                   | 1800       | 1800       |
+| AIC                 | 12258.2    | 12259.7    |
+| BIC                 | 12274.7    | 12281.7    |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=3303.565, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=3248.206, df=1, p=0.0000
+
+
+=== Outcome: emission_diff | Clustered SE (by session_code) ===
+| Y = emission_diff   | (1)        | (2)        |
+|---------------------|------------|------------|
+| Intercept           | -4.375***  | -4.162***  |
+|                     | (0.685)    | (1.125)    |
+| tax_rate_low        | 13.700***  | 13.701***  |
+|                     | (0.711)    | (0.700)    |
+| tax_rate_high       | -14.475*** | -14.434*** |
+|                     | (0.939)    | (0.924)    |
+| round               |            | -0.035     |
+|                     |            | (0.138)    |
+| N                   | 1800       | 1800       |
+| AIC                 | 12258.2    | 12259.7    |
+| BIC                 | 12274.7    | 12281.7    |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=536.556, df=1, p=0.0000
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=524.007, df=1, p=0.0000
+
+
+=== Outcome: surplus_diff | HC3 Robust SE ===
+| Y = surplus_diff   | (1)        | (2)        |
+|--------------------|------------|------------|
+| Intercept          | -16.796*** | -25.902*** |
+|                    | (0.859)    | (1.527)    |
+| tax_rate_low       | -16.417*** | -16.454*** |
+|                    | (1.667)    | (1.638)    |
+| tax_rate_high      | -51.269*** | -53.023*** |
+|                    | (1.895)    | (1.973)    |
+| round              |            | 1.493***   |
+|                    |            | (0.240)    |
+| N                  | 1800       | 1800       |
+| AIC                | 17755.8    | 17715.8    |
+| BIC                | 17772.3    | 17737.8    |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=248.283, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=294.571, df=1, p=0.0000
+
+
+=== Outcome: surplus_diff | Clustered SE (by session_code) ===
+| Y = surplus_diff   | (1)        | (2)        |
+|--------------------|------------|------------|
+| Intercept          | -16.796*** | -25.902*** |
+|                    | (4.145)    | (7.099)    |
+| tax_rate_low       | -16.417**  | -16.454*** |
+|                    | (5.455)    | (4.220)    |
+| tax_rate_high      | -51.269*** | -53.023*** |
+|                    | (6.272)    | (5.848)    |
+| round              |            | 1.493*     |
+|                    |            | (0.660)    |
+| N                  | 1800       | 1800       |
+| AIC                | 17755.8    | 17715.8    |
+| BIC                | 17772.3    | 17737.8    |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=100.390, df=1, p=0.0000
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=88.217, df=1, p=0.0000
+
+
+=== Outcome: production_diff | HC3 Robust SE ===
+| Y = production_diff   | (1)        | (2)        |
+|-----------------------|------------|------------|
+| Intercept             | -3.200***  | -3.103***  |
+|                       | (0.134)    | (0.297)    |
+| tax_rate_low          | 9.175***   | 9.175***   |
+|                       | (0.267)    | (0.267)    |
+| tax_rate_high         | -10.425*** | -10.406*** |
+|                       | (0.346)    | (0.351)    |
+| round                 |            | -0.016     |
+|                       |            | (0.040)    |
+| N                     | 1800       | 1800       |
+| AIC                   | 11487.4    | 11489.2    |
+| BIC                   | 11503.8    | 11511.2    |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=2477.957, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=2418.525, df=1, p=0.0000
+
+
+=== Outcome: production_diff | Clustered SE (by session_code) ===
+| Y = production_diff   | (1)        | (2)        |
+|-----------------------|------------|------------|
+| Intercept             | -3.200***  | -3.103***  |
+|                       | (0.594)    | (0.913)    |
+| tax_rate_low          | 9.175***   | 9.175***   |
+|                       | (0.503)    | (0.499)    |
+| tax_rate_high         | -10.425*** | -10.406*** |
+|                       | (0.695)    | (0.706)    |
+| round                 |            | -0.016     |
+|                       |            | (0.112)    |
+| N                     | 1800       | 1800       |
+| AIC                   | 11487.4    | 11489.2    |
+| BIC                   | 11503.8    | 11511.2    |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=445.482, df=1, p=0.0000
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=431.688, df=1, p=0.0000
+
+
+=== Outcome: emission_policy_diff | HC3 Robust SE ===
+| Y = emission_policy_diff   | (1)       | (2)       |
+|----------------------------|-----------|-----------|
+| Intercept                  | -4.375*** | -4.149*** |
+|                            | (0.159)   | (0.286)   |
+| tax_rate_low               | -1.075*** | -1.074*** |
+|                            | (0.262)   | (0.262)   |
+| tax_rate_high              | 0.775**   | 0.819**   |
+|                            | (0.283)   | (0.274)   |
+| round                      |           | -0.037    |
+|                            |           | (0.033)   |
+| N                          | 1800      | 1800      |
+| AIC                        | 10879.7   | 10880.5   |
+| BIC                        | 10896.1   | 10902.5   |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=34.844, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=38.635, df=1, p=0.0000
+
+
+=== Outcome: emission_policy_diff | Clustered SE (by session_code) ===
+| Y = emission_policy_diff   | (1)       | (2)       |
+|----------------------------|-----------|-----------|
+| Intercept                  | -4.375*** | -4.149*** |
+|                            | (0.685)   | (1.086)   |
+| tax_rate_low               | -1.075    | -1.074    |
+|                            | (0.740)   | (0.726)   |
+| tax_rate_high              | 0.775     | 0.819     |
+|                            | (0.918)   | (0.871)   |
+| round                      |           | -0.037    |
+|                            |           | (0.119)   |
+| N                          | 1800      | 1800      |
+| AIC                        | 10879.7   | 10880.5   |
+| BIC                        | 10896.1   | 10902.5   |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=2.558, df=1, p=0.1097
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=2.658, df=1, p=0.1030
+
+
+=== Outcome: production_policy_diff | HC3 Robust SE ===
+| Y = production_policy_diff   | (1)       | (2)       |
+|------------------------------|-----------|-----------|
+| Intercept                    | -3.200*** | -3.012*** |
+|                              | (0.134)   | (0.238)   |
+| tax_rate_low                 | -1.100*** | -1.099*** |
+|                              | (0.225)   | (0.225)   |
+| tax_rate_high                | 0.325     | 0.361     |
+|                              | (0.219)   | (0.216)   |
+| round                        |           | -0.031    |
+|                              |           | (0.027)   |
+| N                            | 1800      | 1800      |
+| AIC                          | 10111.6   | 10112.3   |
+| BIC                          | 10128.0   | 10134.3   |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=32.452, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=35.489, df=1, p=0.0000
+
+
+=== Outcome: production_policy_diff | Clustered SE (by session_code) ===
+| Y = production_policy_diff   | (1)       | (2)      |
+|------------------------------|-----------|----------|
+| Intercept                    | -3.200*** | -3.012** |
+|                              | (0.594)   | (0.964)  |
+| tax_rate_low                 | -1.100*   | -1.099*  |
+|                              | (0.543)   | (0.532)  |
+| tax_rate_high                | 0.325     | 0.361    |
+|                              | (0.661)   | (0.637)  |
+| round                        |           | -0.031   |
+|                              |           | (0.098)  |
+| N                            | 1800      | 1800     |
+| AIC                          | 10111.6   | 10112.3  |
+| BIC                          | 10128.0   | 10134.3  |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=2.660, df=1, p=0.1029
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=2.744, df=1, p=0.0976
+
+
+=== Outcome: pi_policy_diff | HC3 Robust SE ===
+| Y = pi_policy_diff   | (1)        | (2)        |
+|----------------------|------------|------------|
+| Intercept            | -16.796*** | -23.177*** |
+|                      | (0.859)    | (1.603)    |
+| tax_rate_low         | -9.667***  | -9.693***  |
+|                      | (1.593)    | (1.583)    |
+| tax_rate_high        | -15.919*** | -17.148*** |
+|                      | (2.237)    | (2.307)    |
+| round                |            | 1.046***   |
+|                      |            | (0.251)    |
+| N                    | 1800       | 1800       |
+| AIC                  | 18096.2    | 18081.2    |
+| BIC                  | 18112.7    | 18103.2    |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=6.446, df=1, p=0.0111
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=9.392, df=1, p=0.0022
+
+
+=== Outcome: pi_policy_diff | Clustered SE (by session_code) ===
+| Y = pi_policy_diff   | (1)        | (2)       |
+|----------------------|------------|-----------|
+| Intercept            | -16.796*** | -23.177** |
+|                      | (4.145)    | (8.026)   |
+| tax_rate_low         | -9.667*    | -9.693*   |
+|                      | (4.601)    | (4.060)   |
+| tax_rate_high        | -15.919    | -17.148   |
+|                      | (9.605)    | (9.359)   |
+| round                |            | 1.046     |
+|                      |            | (0.846)   |
+| N                    | 1800       | 1800      |
+| AIC                  | 18096.2    | 18081.2   |
+| BIC                  | 18112.7    | 18103.2   |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=0.975, df=1, p=0.3236
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=1.081, df=1, p=0.2984
+
+
+=== Outcome: surplus_policy_diff | HC3 Robust SE ===
+| Y = surplus_policy_diff   | (1)        | (2)        |
+|---------------------------|------------|------------|
+| Intercept                 | -16.796*** | -25.716*** |
+|                           | (0.859)    | (1.540)    |
+| tax_rate_low              | 6.684***   | 6.647***   |
+|                           | (1.676)    | (1.648)    |
+| tax_rate_high             | -26.719*** | -28.437*** |
+|                           | (1.917)    | (2.014)    |
+| round                     |            | 1.462***   |
+|                           |            | (0.242)    |
+| N                         | 1800       | 1800       |
+| AIC                       | 17791.9    | 17754.4    |
+| BIC                       | 17808.3    | 17776.4    |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=222.869, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=261.639, df=1, p=0.0000
+
+
+=== Outcome: surplus_policy_diff | Clustered SE (by session_code) ===
+| Y = surplus_policy_diff   | (1)        | (2)        |
+|---------------------------|------------|------------|
+| Intercept                 | -16.796*** | -25.716*** |
+|                           | (4.145)    | (7.514)    |
+| tax_rate_low              | 6.684      | 6.647      |
+|                           | (5.655)    | (4.427)    |
+| tax_rate_high             | -26.719*** | -28.437*** |
+|                           | (6.404)    | (6.106)    |
+| round                     |            | 1.462*     |
+|                           |            | (0.709)    |
+| N                         | 1800       | 1800       |
+| AIC                       | 17791.9    | 17754.4    |
+| BIC                       | 17808.3    | 17776.4    |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=95.182, df=1, p=0.0000
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=84.003, df=1, p=0.0000
+
+
+Standard errors in parentheses.
+* p<.05, ** p<.01, *** p<.001.
+

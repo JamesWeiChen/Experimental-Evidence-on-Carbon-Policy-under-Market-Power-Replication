@@ -1,0 +1,403 @@
+=== Outcome: emission_policy_diff | HC3 Robust SE ===
+| Y = emission_policy_diff   | (1)       | (2)       | (3)       | (4)       |
+|----------------------------|-----------|-----------|-----------|-----------|
+| Intercept                  | -4.375*** | -5.950*** | -7.150*** | -4.375*** |
+|                            | (0.159)   | (0.323)   | (0.390)   | (0.159)   |
+| tax_rate_low               | -1.075*** |           |           |           |
+|                            | (0.262)   |           |           |           |
+| tax_rate_high              | 0.775**   |           |           |           |
+|                            | (0.283)   |           |           |           |
+| is_equal                   |           | -4.200*** | -1.800**  |           |
+|                            |           | (0.289)   | (0.604)   |           |
+| eq_price_low               |           | -1.675*** | 1.000*    |           |
+|                            |           | (0.392)   | (0.492)   |           |
+| eq_price_high              |           | 4.025***  | 4.950***  |           |
+|                            |           | (0.357)   | (0.432)   |           |
+| is_equal:eq_price_low      |           |           | -5.350*** |           |
+|                            |           |           | (0.770)   |           |
+| is_equal:eq_price_high     |           |           | -1.850**  |           |
+|                            |           |           | (0.708)   |           |
+| is_trade                   |           |           |           | -3.675*** |
+|                            |           |           |           | (0.343)   |
+| policy_rate_low            |           |           |           | -1.075*** |
+|                            |           |           |           | (0.262)   |
+| policy_rate_high           |           |           |           | 0.775**   |
+|                            |           |           |           | (0.283)   |
+| is_trade:policy_rate_low   |           |           |           | -0.600    |
+|                            |           |           |           | (0.489)   |
+| is_trade:policy_rate_high  |           |           |           | 3.250***  |
+|                            |           |           |           | (0.460)   |
+| N                          | 1800      | 1800      | 1800      | 3600      |
+| AIC                        | 10879.7   | 11639.1   | 11583.0   | 22842.8   |
+| BIC                        | 10896.1   | 11661.0   | 11615.9   | 22880.0   |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=34.844, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=342.502, df=1, p=0.0000
+
+--- Extra effects for model (3) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=124.696, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=55.707, df=2, p=0.0000
+
+--- Extra effects for model (4) (HC3 Robust SE) ---
+Trade - Tax at policy rate 6: effect=-3.675, SE=0.343, t=-10.724, p=0.0000
+Trade - Tax at policy rate 3: effect=-4.275, SE=0.349, t=-12.261, p=0.0000
+Trade - Tax at policy rate 9: effect=-0.425, SE=0.308, t=-1.382, p=0.1670
+Wald test (trade-tax difference does not vary by policy rate): chi2=82.931, df=2, p=0.0000
+
+
+=== Outcome: emission_policy_diff | Clustered SE (by session_code) ===
+| Y = emission_policy_diff   | (1)       | (2)       | (3)       | (4)       |
+|----------------------------|-----------|-----------|-----------|-----------|
+| Intercept                  | -4.375*** | -5.950*** | -7.150*** | -4.375*** |
+|                            | (0.685)   | (1.632)   | (1.934)   | (0.685)   |
+| tax_rate_low               | -1.075    |           |           |           |
+|                            | (0.740)   |           |           |           |
+| tax_rate_high              | 0.775     |           |           |           |
+|                            | (0.918)   |           |           |           |
+| is_equal                   |           | -4.200**  | -1.800    |           |
+|                            |           | (1.303)   | (2.503)   |           |
+| eq_price_low               |           | -1.675    | 1.000     |           |
+|                            |           | (1.755)   | (2.058)   |           |
+| eq_price_high              |           | 4.025***  | 4.950**   |           |
+|                            |           | (1.173)   | (1.651)   |           |
+| is_equal:eq_price_low      |           |           | -5.350    |           |
+|                            |           |           | (3.025)   |           |
+| is_equal:eq_price_high     |           |           | -1.850    |           |
+|                            |           |           | (2.264)   |           |
+| is_trade                   |           |           |           | -3.675**  |
+|                            |           |           |           | (1.288)   |
+| policy_rate_low            |           |           |           | -1.075    |
+|                            |           |           |           | (0.740)   |
+| policy_rate_high           |           |           |           | 0.775     |
+|                            |           |           |           | (0.918)   |
+| is_trade:policy_rate_low   |           |           |           | -0.600    |
+|                            |           |           |           | (2.219)   |
+| is_trade:policy_rate_high  |           |           |           | 3.250     |
+|                            |           |           |           | (1.732)   |
+| N                          | 1800      | 1800      | 1800      | 3600      |
+| AIC                        | 10879.7   | 11639.1   | 11583.0   | 22842.8   |
+| BIC                        | 10896.1   | 11661.0   | 11615.9   | 22880.0   |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=2.558, df=1, p=0.1097
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=32.000, df=1, p=0.0000
+
+--- Extra effects for model (3) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=26.572, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=4.734, df=2, p=0.0938
+
+--- Extra effects for model (4) (Clustered SE (by session_code)) ---
+Trade - Tax at policy rate 6: effect=-3.675, SE=1.288, t=-2.854, p=0.0043
+Trade - Tax at policy rate 3: effect=-4.275, SE=1.502, t=-2.847, p=0.0044
+Trade - Tax at policy rate 9: effect=-0.425, SE=1.177, t=-0.361, p=0.7180
+Wald test (trade-tax difference does not vary by policy rate): chi2=6.916, df=2, p=0.0315
+
+
+=== Outcome: production_policy_diff | HC3 Robust SE ===
+| Y = production_policy_diff   | (1)       | (2)       | (3)       | (4)       |
+|------------------------------|-----------|-----------|-----------|-----------|
+| Intercept                    | -3.200*** | -6.975*** | -8.150*** | -3.200*** |
+|                              | (0.134)   | (0.285)   | (0.365)   | (0.134)   |
+| tax_rate_low                 | -1.100*** |           |           |           |
+|                              | (0.225)   |           |           |           |
+| tax_rate_high                | 0.325     |           |           |           |
+|                              | (0.219)   |           |           |           |
+| is_equal                     |           | 0.950***  | 3.300***  |           |
+|                              |           | (0.242)   | (0.489)   |           |
+| eq_price_low                 |           | -0.750*   | 1.550***  |           |
+|                              |           | (0.318)   | (0.463)   |           |
+| eq_price_high                |           | 2.425***  | 3.650***  |           |
+|                              |           | (0.304)   | (0.421)   |           |
+| is_equal:eq_price_low        |           |           | -4.600*** |           |
+|                              |           |           | (0.622)   |           |
+| is_equal:eq_price_high       |           |           | -2.450*** |           |
+|                              |           |           | (0.602)   |           |
+| is_trade                     |           |           |           | -3.300*** |
+|                              |           |           |           | (0.287)   |
+| policy_rate_low              |           |           |           | -1.100*** |
+|                              |           |           |           | (0.225)   |
+| policy_rate_high             |           |           |           | 0.325     |
+|                              |           |           |           | (0.219)   |
+| is_trade:policy_rate_low     |           |           |           | 0.350     |
+|                              |           |           |           | (0.390)   |
+| is_trade:policy_rate_high    |           |           |           | 2.100***  |
+|                              |           |           |           | (0.378)   |
+| N                            | 1800      | 1800      | 1800      | 3600      |
+| AIC                          | 10111.6   | 10992.9   | 10935.2   | 21228.0   |
+| BIC                          | 10128.0   | 11014.9   | 10968.2   | 21265.2   |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=32.452, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=145.195, df=1, p=0.0000
+
+--- Extra effects for model (3) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=35.148, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=55.435, df=2, p=0.0000
+
+--- Extra effects for model (4) (HC3 Robust SE) ---
+Trade - Tax at policy rate 6: effect=-3.300, SE=0.287, t=-11.510, p=0.0000
+Trade - Tax at policy rate 3: effect=-2.950, SE=0.265, t=-11.152, p=0.0000
+Trade - Tax at policy rate 9: effect=-1.200, SE=0.247, t=-4.865, p=0.0000
+Wald test (trade-tax difference does not vary by policy rate): chi2=37.827, df=2, p=0.0000
+
+
+=== Outcome: production_policy_diff | Clustered SE (by session_code) ===
+| Y = production_policy_diff   | (1)       | (2)       | (3)       | (4)       |
+|------------------------------|-----------|-----------|-----------|-----------|
+| Intercept                    | -3.200*** | -6.975*** | -8.150*** | -3.200*** |
+|                              | (0.594)   | (1.291)   | (1.388)   | (0.594)   |
+| tax_rate_low                 | -1.100*   |           |           |           |
+|                              | (0.543)   |           |           |           |
+| tax_rate_high                | 0.325     |           |           |           |
+|                              | (0.661)   |           |           |           |
+| is_equal                     |           | 0.950     | 3.300     |           |
+|                              |           | (1.424)   | (1.757)   |           |
+| eq_price_low                 |           | -0.750    | 1.550     |           |
+|                              |           | (1.262)   | (1.391)   |           |
+| eq_price_high                |           | 2.425**   | 3.650**   |           |
+|                              |           | (0.836)   | (1.200)   |           |
+| is_equal:eq_price_low        |           |           | -4.600*   |           |
+|                              |           |           | (2.004)   |           |
+| is_equal:eq_price_high       |           |           | -2.450    |           |
+|                              |           |           | (1.459)   |           |
+| is_trade                     |           |           |           | -3.300**  |
+|                              |           |           |           | (1.084)   |
+| policy_rate_low              |           |           |           | -1.100*   |
+|                              |           |           |           | (0.543)   |
+| policy_rate_high             |           |           |           | 0.325     |
+|                              |           |           |           | (0.661)   |
+| is_trade:policy_rate_low     |           |           |           | 0.350     |
+|                              |           |           |           | (1.508)   |
+| is_trade:policy_rate_high    |           |           |           | 2.100     |
+|                              |           |           |           | (1.103)   |
+| N                            | 1800      | 1800      | 1800      | 3600      |
+| AIC                          | 10111.6   | 10992.9   | 10935.2   | 21228.0   |
+| BIC                          | 10128.0   | 11014.9   | 10968.2   | 21265.2   |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=2.660, df=1, p=0.1029
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=15.000, df=1, p=0.0001
+
+--- Extra effects for model (3) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=9.141, df=1, p=0.0025
+Wald test (interaction terms jointly zero): chi2=5.297, df=2, p=0.0708
+
+--- Extra effects for model (4) (Clustered SE (by session_code)) ---
+Trade - Tax at policy rate 6: effect=-3.300, SE=1.084, t=-3.044, p=0.0023
+Trade - Tax at policy rate 3: effect=-2.950, SE=0.824, t=-3.582, p=0.0003
+Trade - Tax at policy rate 9: effect=-1.200, SE=1.026, t=-1.170, p=0.2421
+Wald test (trade-tax difference does not vary by policy rate): chi2=4.228, df=2, p=0.1207
+
+
+=== Outcome: pi_policy_diff | HC3 Robust SE ===
+| Y = pi_policy_diff        | (1)        | (2)         | (3)         | (4)        |
+|---------------------------|------------|-------------|-------------|------------|
+| Intercept                 | -16.796*** | -110.132*** | -121.607*** | -16.796*** |
+|                           | (0.859)    | (3.166)     | (4.271)     | (0.859)    |
+| tax_rate_low              | -9.667***  |             |             |            |
+|                           | (1.593)    |             |             |            |
+| tax_rate_high             | -15.919*** |             |             |            |
+|                           | (2.237)    |             |             |            |
+| is_equal                  |            | -3.573      | 19.377***   |            |
+|                           |            | (2.509)     | (5.098)     |            |
+| eq_price_low              |            | 16.650***   | 41.288***   |            |
+|                           |            | (3.297)     | (5.231)     |            |
+| eq_price_high             |            | 21.771***   | 31.557***   |            |
+|                           |            | (3.162)     | (4.579)     |            |
+| is_equal:eq_price_low     |            |             | -49.278***  |            |
+|                           |            |             | (6.445)     |            |
+| is_equal:eq_price_high    |            |             | -19.573**   |            |
+|                           |            |             | (6.259)     |            |
+| is_trade                  |            |             |             | -95.123*** |
+|                           |            |             |             | (2.715)    |
+| policy_rate_low           |            |             |             | -9.667***  |
+|                           |            |             |             | (1.593)    |
+| policy_rate_high          |            |             |             | -15.919*** |
+|                           |            |             |             | (2.237)    |
+| is_trade:policy_rate_low  |            |             |             | 26.316***  |
+|                           |            |             |             | (3.663)    |
+| is_trade:policy_rate_high |            |             |             | 37.689***  |
+|                           |            |             |             | (3.863)    |
+| N                         | 1800       | 1800        | 1800        | 3600       |
+| AIC                       | 18096.2    | 19416.6     | 19353.9     | 37749.7    |
+| BIC                       | 18112.7    | 19438.6     | 19386.9     | 37786.9    |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=6.446, df=1, p=0.0111
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=3.515, df=1, p=0.0608
+
+--- Extra effects for model (3) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=7.991, df=1, p=0.0047
+Wald test (interaction terms jointly zero): chi2=63.999, df=2, p=0.0000
+
+--- Extra effects for model (4) (HC3 Robust SE) ---
+Trade - Tax at policy rate 6: effect=-95.123, SE=2.715, t=-35.035, p=0.0000
+Trade - Tax at policy rate 3: effect=-68.806, SE=2.459, t=-27.985, p=0.0000
+Trade - Tax at policy rate 9: effect=-57.433, SE=2.748, t=-20.900, p=0.0000
+Wald test (trade-tax difference does not vary by policy rate): chi2=101.250, df=2, p=0.0000
+
+
+=== Outcome: pi_policy_diff | Clustered SE (by session_code) ===
+| Y = pi_policy_diff        | (1)        | (2)         | (3)         | (4)        |
+|---------------------------|------------|-------------|-------------|------------|
+| Intercept                 | -16.796*** | -110.132*** | -121.607*** | -16.796*** |
+|                           | (4.145)    | (8.443)     | (12.245)    | (4.145)    |
+| tax_rate_low              | -9.667*    |             |             |            |
+|                           | (4.601)    |             |             |            |
+| tax_rate_high             | -15.919    |             |             |            |
+|                           | (9.605)    |             |             |            |
+| is_equal                  |            | -3.573      | 19.377      |            |
+|                           |            | (11.084)    | (17.436)    |            |
+| eq_price_low              |            | 16.650      | 41.288      |            |
+|                           |            | (15.028)    | (22.330)    |            |
+| eq_price_high             |            | 21.771**    | 31.557*     |            |
+|                           |            | (7.638)     | (13.003)    |            |
+| is_equal:eq_price_low     |            |             | -49.278     |            |
+|                           |            |             | (25.177)    |            |
+| is_equal:eq_price_high    |            |             | -19.573     |            |
+|                           |            |             | (13.817)    |            |
+| is_trade                  |            |             |             | -95.123*** |
+|                           |            |             |             | (10.908)   |
+| policy_rate_low           |            |             |             | -9.667*    |
+|                           |            |             |             | (4.601)    |
+| policy_rate_high          |            |             |             | -15.919    |
+|                           |            |             |             | (9.606)    |
+| is_trade:policy_rate_low  |            |             |             | 26.316     |
+|                           |            |             |             | (18.589)   |
+| is_trade:policy_rate_high |            |             |             | 37.689*    |
+|                           |            |             |             | (15.364)   |
+| N                         | 1800       | 1800        | 1800        | 3600       |
+| AIC                       | 18096.2    | 19416.6     | 19353.9     | 37749.7    |
+| BIC                       | 18112.7    | 19438.6     | 19386.9     | 37786.9    |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=0.975, df=1, p=0.3236
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=0.321, df=1, p=0.5708
+
+--- Extra effects for model (3) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=0.795, df=1, p=0.3725
+Wald test (interaction terms jointly zero): chi2=4.087, df=2, p=0.1296
+
+--- Extra effects for model (4) (Clustered SE (by session_code)) ---
+Trade - Tax at policy rate 6: effect=-95.123, SE=10.908, t=-8.721, p=0.0000
+Trade - Tax at policy rate 3: effect=-68.806, SE=12.724, t=-5.408, p=0.0000
+Trade - Tax at policy rate 9: effect=-57.433, SE=10.513, t=-5.463, p=0.0000
+Wald test (trade-tax difference does not vary by policy rate): chi2=8.013, df=2, p=0.0182
+
+
+=== Outcome: surplus_policy_diff | HC3 Robust SE ===
+| Y = surplus_policy_diff   | (1)        | (2)         | (3)         | (4)        |
+|---------------------------|------------|-------------|-------------|------------|
+| Intercept                 | -16.796*** | -111.882*** | -121.607*** | -16.796*** |
+|                           | (0.859)    | (3.164)     | (4.271)     | (0.859)    |
+| tax_rate_low              | 6.684***   |             |             |            |
+|                           | (1.676)    |             |             |            |
+| tax_rate_high             | -26.719*** |             |             |            |
+|                           | (1.917)    |             |             |            |
+| is_equal                  |            | -0.073      | 19.377***   |            |
+|                           |            | (2.547)     | (5.098)     |            |
+| eq_price_low              |            | 45.825***   | 59.738***   |            |
+|                           |            | (3.142)     | (5.026)     |            |
+| eq_price_high             |            | 9.695**     | 24.957***   |            |
+|                           |            | (3.371)     | (4.671)     |            |
+| is_equal:eq_price_low     |            |             | -27.828***  |            |
+|                           |            |             | (6.232)     |            |
+| is_equal:eq_price_high    |            |             | -30.523***  |            |
+|                           |            |             | (6.688)     |            |
+| is_trade                  |            |             |             | -95.123*** |
+|                           |            |             |             | (2.715)    |
+| policy_rate_low           |            |             |             | 6.683***   |
+|                           |            |             |             | (1.676)    |
+| policy_rate_high          |            |             |             | -26.719*** |
+|                           |            |             |             | (1.917)    |
+| is_trade:policy_rate_low  |            |             |             | 39.141***  |
+|                           |            |             |             | (3.560)    |
+| is_trade:policy_rate_high |            |             |             | 36.414***  |
+|                           |            |             |             | (3.877)    |
+| N                         | 1800       | 1800        | 1800        | 3600       |
+| AIC                       | 17791.9    | 19470.8     | 19445.1     | 37637.9    |
+| BIC                       | 17808.3    | 19492.8     | 19478.1     | 37675.0    |
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=222.869, df=1, p=0.0000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=164.065, df=1, p=0.0000
+
+--- Extra effects for model (3) (HC3 Robust SE) ---
+Wald test (eq_price_low = eq_price_high): chi2=114.130, df=1, p=0.0000
+Wald test (interaction terms jointly zero): chi2=25.119, df=2, p=0.0000
+
+--- Extra effects for model (4) (HC3 Robust SE) ---
+Trade - Tax at policy rate 6: effect=-95.123, SE=2.715, t=-35.035, p=0.0000
+Trade - Tax at policy rate 3: effect=-55.981, SE=2.302, t=-24.319, p=0.0000
+Trade - Tax at policy rate 9: effect=-58.708, SE=2.767, t=-21.218, p=0.0000
+Wald test (trade-tax difference does not vary by policy rate): chi2=138.242, df=2, p=0.0000
+
+
+=== Outcome: surplus_policy_diff | Clustered SE (by session_code) ===
+| Y = surplus_policy_diff   | (1)        | (2)         | (3)         | (4)        |
+|---------------------------|------------|-------------|-------------|------------|
+| Intercept                 | -16.796*** | -111.882*** | -121.607*** | -16.796*** |
+|                           | (4.145)    | (8.111)     | (12.245)    | (4.145)    |
+| tax_rate_low              | 6.684      |             |             |            |
+|                           | (5.655)    |             |             |            |
+| tax_rate_high             | -26.719*** |             |             |            |
+|                           | (6.404)    |             |             |            |
+| is_equal                  |            | -0.073      | 19.377      |            |
+|                           |            | (11.296)    | (17.436)    |            |
+| eq_price_low              |            | 45.825***   | 59.738**    |            |
+|                           |            | (13.153)    | (22.992)    |            |
+| eq_price_high             |            | 9.695       | 24.957*     |            |
+|                           |            | (8.368)     | (11.787)    |            |
+| is_equal:eq_price_low     |            |             | -27.828     |            |
+|                           |            |             | (24.627)    |            |
+| is_equal:eq_price_high    |            |             | -30.523*    |            |
+|                           |            |             | (13.289)    |            |
+| is_trade                  |            |             |             | -95.123*** |
+|                           |            |             |             | (10.908)   |
+| policy_rate_low           |            |             |             | 6.683      |
+|                           |            |             |             | (5.656)    |
+| policy_rate_high          |            |             |             | -26.719*** |
+|                           |            |             |             | (6.404)    |
+| is_trade:policy_rate_low  |            |             |             | 39.141*    |
+|                           |            |             |             | (17.209)   |
+| is_trade:policy_rate_high |            |             |             | 36.414**   |
+|                           |            |             |             | (14.094)   |
+| N                         | 1800       | 1800        | 1800        | 3600       |
+| AIC                       | 17791.9    | 19470.8     | 19445.1     | 37637.9    |
+| BIC                       | 17808.3    | 19492.8     | 19478.1     | 37675.0    |
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+Wald test (tax_rate_low = tax_rate_high): chi2=95.182, df=1, p=0.0000
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=19.569, df=1, p=0.0000
+
+--- Extra effects for model (3) (Clustered SE (by session_code)) ---
+Wald test (eq_price_low = eq_price_high): chi2=7.878, df=1, p=0.0050
+Wald test (interaction terms jointly zero): chi2=6.515, df=2, p=0.0385
+
+--- Extra effects for model (4) (Clustered SE (by session_code)) ---
+Trade - Tax at policy rate 6: effect=-95.123, SE=10.908, t=-8.721, p=0.0000
+Trade - Tax at policy rate 3: effect=-55.981, SE=10.736, t=-5.214, p=0.0000
+Trade - Tax at policy rate 9: effect=-58.708, SE=9.882, t=-5.941, p=0.0000
+Wald test (trade-tax difference does not vary by policy rate): chi2=6.696, df=2, p=0.0352
+
+
+Standard errors in parentheses.
+* p<.05, ** p<.01, *** p<.001.
+

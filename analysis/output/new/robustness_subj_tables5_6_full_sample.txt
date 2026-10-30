@@ -1,0 +1,42 @@
+# A11/A12. Table 5-6 specifications (all stages), session-clustered, full_sample
+# emission_diff = emission - e_soc; production_profit_diff = (revenue - total_cost) - pi_soc, as in the paper's Tables 5-6.
+# The paper's tables cluster by participant; here clusters are sessions (10) with wild-cluster-bootstrap p-values.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): emission_diff ~ is_tax + is_trade + is_dominant + is_dominant:is_tax + is_dominant:is_trade
+N = 5400, clusters (session_code) = 10, R2 = 0.311, bootstrap = webb (B = 9999)
+| term                 | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept            | 0.787***  | (0.043)      |                     0 |                    0 |                       0 |
+| is_tax               | -1.003*** | (0.031)      |                     0 |                    0 |                       0 |
+| is_trade             | -1.172*** | (0.104)      |                     0 |                    0 |                       0 |
+| is_dominant          | 4.024***  | (0.372)      |                     0 |                    0 |                       0 |
+| is_dominant:is_tax   | -4.485*** | (0.250)      |                     0 |                    0 |                       0 |
+| is_dominant:is_trade | -4.523*** | (0.817)      |                     0 |                    0 |                       0 |
+--- linear hypotheses ---
+| hypothesis                                    |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-----------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_dominant:is_tax = 0                        |     -4.485 | (0.250)      |                 0     |                 0    |                   0     |
+| is_dominant:is_trade = 0                      |     -4.523 | (0.817)      |                 0     |                 0    |                   0     |
+| is_dominant:is_tax - is_dominant:is_trade = 0 |      0.037 | (0.734)      |                 0.959 |                 0.96 |                   0.955 |
+
+=== Model (2): production_profit_diff ~ is_tax + is_trade + is_dominant + is_dominant:is_tax + is_dominant:is_trade
+N = 5400, clusters (session_code) = 10, R2 = 0.118, bootstrap = webb (B = 9999)
+| term                 | coef       | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|----------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept            | -0.135     | (0.411)      |                 0.743 |                0.75  |                   0.741 |
+| is_tax               | -3.380***  | (0.296)      |                 0     |                0     |                   0     |
+| is_trade             | -9.231***  | (0.903)      |                 0     |                0     |                   0     |
+| is_dominant          | 12.608***  | (1.265)      |                 0     |                0     |                   0     |
+| is_dominant:is_tax   | -17.421*** | (1.347)      |                 0     |                0     |                   0     |
+| is_dominant:is_trade | -16.825*   | (6.270)      |                 0.007 |                0.025 |                   0.031 |
+--- linear hypotheses ---
+| hypothesis                                    |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-----------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_dominant:is_tax = 0                        |    -17.421 | (1.347)      |                 0     |                0     |                   0     |
+| is_dominant:is_trade = 0                      |    -16.825 | (6.270)      |                 0.007 |                0.025 |                   0.031 |
+| is_dominant:is_tax - is_dominant:is_trade = 0 |     -0.596 | (5.683)      |                 0.916 |                0.919 |                   0.918 |
+

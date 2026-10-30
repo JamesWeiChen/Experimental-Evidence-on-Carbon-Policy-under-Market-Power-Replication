@@ -1,0 +1,88 @@
+# A3. Signed price deviation from the competitive permit price (iqr_filtered)
+# Data: trades_panel.csv (executed trades, rounds 1-12 of the Carbon Trading stage, 10 sessions).
+# signed_diff = price - eq_price (eq_price in {3, 6, 9} is the theoretical competitive permit price = matched tax rate);
+# rel_dev = price / eq_price - 1; mins = seconds / 60 within the 120-second trading window.
+# Samples: 'iqr_filtered' = existing per-session-round IQR outlier rule of run_trade_mkt_reg.py; 'all_trades' = no filter.
+# Hypotheses: equal-allocation effect at eq_price 6 / 3 / 9 (simple effects) and joint heterogeneity;
+# in the mins models: effect at the start (mins=0) and end (mins=2) of the window.
+# Standard errors clustered by session_code; stars use the wild-cluster-bootstrap p-value: * p<.05, ** p<.01, *** p<.001.
+# p (cluster, normal): statsmodels cluster-robust p with a normal reference, the convention of the existing tables.
+# p (cluster, t G-1): same statistic with a t(G-1) reference.
+# p (wild cluster boot): restricted wild cluster bootstrap (Cameron-Gelbach-Miller 2008), Webb six-point weights unless stated.
+
+=== Model (1): signed_diff ~ is_equal*(eq_price_low + eq_price_high) + mins + round
+N = 1764, clusters (session_code) = 10, R2 = 0.429, bootstrap = webb (B = 9999)
+| term                   | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept              | 37.642*** | (2.736)      |                 0     |                0     |                   0     |
+| is_equal               | 2.599     | (2.528)      |                 0.304 |                0.331 |                   0.385 |
+| eq_price_low           | -1.463    | (0.732)      |                 0.046 |                0.077 |                   0.108 |
+| eq_price_high          | -2.835    | (1.454)      |                 0.051 |                0.083 |                   0.142 |
+| is_equal:eq_price_low  | 4.027**   | (1.096)      |                 0     |                0.005 |                   0.008 |
+| is_equal:eq_price_high | 5.974     | (2.733)      |                 0.029 |                0.057 |                   0.054 |
+| mins                   | -4.077*** | (0.579)      |                 0     |                0     |                   0.001 |
+| round                  | -2.507*** | (0.397)      |                 0     |                0     |                   0     |
+--- linear hypotheses ---
+| hypothesis                                            | estimate   | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-------------------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_equal = 0                                          | 2.599      | (2.528)      |                 0.304 |                0.331 |                   0.385 |
+| is_equal + is_equal:eq_price_low = 0                  | 6.626      | (2.525)      |                 0.009 |                0.028 |                   0.033 |
+| is_equal + is_equal:eq_price_high = 0                 | 8.573      | (2.107)      |                 0     |                0.003 |                   0.012 |
+| is_equal:eq_price_low = 0, is_equal:eq_price_high = 0 | (joint)    |              |                 0     |                0.011 |                   0.001 |
+
+=== Model (2): signed_diff ~ is_equal*mins + eq_price_low + eq_price_high + round
+N = 1764, clusters (session_code) = 10, R2 = 0.422, bootstrap = webb (B = 9999)
+| term          | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|---------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept     | 36.554*** | (2.669)      |                 0     |                0     |                   0     |
+| is_equal      | 5.059*    | (1.956)      |                 0.01  |                0.029 |                   0.042 |
+| mins          | -4.608*   | (0.817)      |                 0     |                0     |                   0.019 |
+| is_equal:mins | 0.840     | (1.017)      |                 0.409 |                0.43  |                   0.432 |
+| eq_price_low  | 0.564     | (0.712)      |                 0.429 |                0.449 |                   0.463 |
+| eq_price_high | 0.197     | (1.592)      |                 0.902 |                0.904 |                   0.918 |
+| round         | -2.513*** | (0.409)      |                 0     |                0     |                   0     |
+--- linear hypotheses ---
+| hypothesis                     |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|--------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_equal = 0                   |      5.059 | (1.956)      |                 0.01  |                0.029 |                   0.042 |
+| is_equal + 2*is_equal:mins = 0 |      6.738 | (2.634)      |                 0.011 |                0.031 |                   0.045 |
+| is_equal:mins = 0              |      0.84  | (1.017)      |                 0.409 |                0.43  |                   0.432 |
+
+=== Model (3): rel_dev ~ is_equal*(eq_price_low + eq_price_high) + mins + round
+N = 1764, clusters (session_code) = 10, R2 = 0.527, bootstrap = webb (B = 9999)
+| term                   | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|------------------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept              | 6.667***  | (0.489)      |                 0     |                0     |                   0     |
+| is_equal               | 0.468     | (0.440)      |                 0.288 |                0.316 |                   0.368 |
+| eq_price_low           | 2.609*    | (0.255)      |                 0     |                0     |                   0.01  |
+| eq_price_high          | -1.322*   | (0.207)      |                 0     |                0     |                   0.025 |
+| is_equal:eq_price_low  | 1.584*    | (0.532)      |                 0.003 |                0.015 |                   0.028 |
+| is_equal:eq_price_high | 0.513     | (0.437)      |                 0.241 |                0.271 |                   0.298 |
+| mins                   | -0.811*** | (0.160)      |                 0     |                0.001 |                   0.001 |
+| round                  | -0.458*** | (0.077)      |                 0     |                0     |                   0     |
+--- linear hypotheses ---
+| hypothesis                                            | estimate   | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|-------------------------------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_equal = 0                                          | 0.468      | (0.440)      |                 0.288 |                0.316 |                   0.368 |
+| is_equal + is_equal:eq_price_low = 0                  | 2.052      | (0.866)      |                 0.018 |                0.042 |                   0.057 |
+| is_equal + is_equal:eq_price_high = 0                 | 0.980      | (0.248)      |                 0     |                0.003 |                   0.011 |
+| is_equal:eq_price_low = 0, is_equal:eq_price_high = 0 | (joint)    |              |                 0.003 |                0.023 |                   0.007 |
+
+=== Model (4): rel_dev ~ is_equal*mins + eq_price_low + eq_price_high + round
+N = 1764, clusters (session_code) = 10, R2 = 0.519, bootstrap = webb (B = 9999)
+| term          | coef      | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|---------------|-----------|--------------|-----------------------|----------------------|-------------------------|
+| Intercept     | 6.361***  | (0.536)      |                 0     |                0     |                   0     |
+| is_equal      | 1.073*    | (0.363)      |                 0.003 |                0.016 |                   0.032 |
+| mins          | -0.848*   | (0.185)      |                 0     |                0.001 |                   0.026 |
+| is_equal:mins | 0.095     | (0.309)      |                 0.759 |                0.766 |                   0.803 |
+| eq_price_low  | 3.433***  | (0.382)      |                 0     |                0     |                   0     |
+| eq_price_high | -1.068**  | (0.230)      |                 0     |                0.001 |                   0.004 |
+| round         | -0.459*** | (0.078)      |                 0     |                0     |                   0     |
+--- linear hypotheses ---
+| hypothesis                     |   estimate | cluster SE   |   p (cluster, normal) |   p (cluster, t G-1) |   p (wild cluster boot) |
+|--------------------------------|------------|--------------|-----------------------|----------------------|-------------------------|
+| is_equal = 0                   |      1.073 | (0.363)      |                 0.003 |                0.016 |                   0.032 |
+| is_equal + 2*is_equal:mins = 0 |      1.262 | (0.694)      |                 0.069 |                0.103 |                   0.122 |
+| is_equal:mins = 0              |      0.095 | (0.309)      |                 0.759 |                0.766 |                   0.803 |
+

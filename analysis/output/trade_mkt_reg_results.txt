@@ -1,0 +1,239 @@
+=== Outcome: price_diff | HC3 Robust SE ===
+                           Y = price_diff        (1)        (2)        (3)        (4)        (5)
+                                Intercept  37.965***  38.659***  36.593***  37.576***  37.483***
+                                             (0.890)    (0.966)    (0.870)    (0.902)    (0.993)
+                                 is_equal      1.891     3.192*   6.077***   2.863***     3.403*
+                                             (1.181)    (1.341)    (0.657)    (0.846)    (1.398)
+                             eq_price_low    -1.453*     -0.947                -0.611           
+                                             (0.596)    (1.314)               (0.713)           
+                            eq_price_high  -2.791***  -5.274***             -3.267***           
+                                             (0.647)    (1.371)               (0.791)           
+                                     mins  -4.426***  -5.080***  -4.142***  -3.928***  -5.017***
+                                             (0.492)    (0.663)    (0.483)    (0.488)    (0.602)
+                    is_equal:eq_price_low   4.008***      1.613                3.494*           
+                                             (1.072)    (2.432)               (1.488)           
+                   is_equal:eq_price_high   5.943***      4.643              5.801***           
+                                             (1.179)    (2.638)               (1.451)           
+                            is_equal:mins      0.695     -0.467                           2.561*
+                                             (0.946)    (1.082)                          (1.305)
+                                    round  -2.505***  -2.514***  -2.521***  -2.501***  -2.521***
+                                             (0.092)    (0.093)    (0.094)    (0.091)    (0.095)
+                        eq_price_low:mins                -0.500                                 
+                                                        (1.112)                                 
+                       eq_price_high:mins                2.341*                                 
+                                                        (1.158)                                 
+               is_equal:eq_price_low:mins                 2.270                                 
+                                                        (2.136)                                 
+              is_equal:eq_price_high:mins                 1.264                                 
+                                                        (2.133)                                 
+                        buyer_is_dominant                           -1.095      0.323     -0.601
+                                                                   (0.688)    (0.877)    (1.670)
+                       seller_is_dominant                           -0.088     -0.673     -2.372
+                                                                   (0.630)    (0.889)    (1.406)
+               is_equal:buyer_is_dominant                            0.407     -1.811      2.629
+                                                                   (1.088)    (1.403)    (2.543)
+              is_equal:seller_is_dominant                           -0.607      0.893      4.445
+                                                                   (1.245)    (1.483)    (3.118)
+           buyer_is_dominant:eq_price_low                                    -4.303**           
+                                                                              (1.510)           
+          buyer_is_dominant:eq_price_high                                       0.331           
+                                                                              (1.568)           
+          seller_is_dominant:eq_price_low                                       0.410           
+                                                                              (1.404)           
+         seller_is_dominant:eq_price_high                                       1.474           
+                                                                              (1.535)           
+  is_equal:buyer_is_dominant:eq_price_low                                       4.328           
+                                                                              (2.278)           
+ is_equal:buyer_is_dominant:eq_price_high                                       2.866           
+                                                                              (2.851)           
+ is_equal:seller_is_dominant:eq_price_low                                      -2.141           
+                                                                              (2.675)           
+is_equal:seller_is_dominant:eq_price_high                                      -2.417           
+                                                                              (2.968)           
+                   buyer_is_dominant:mins                                                 -0.453
+                                                                                         (1.334)
+                  seller_is_dominant:mins                                                  2.238
+                                                                                         (1.216)
+          is_equal:buyer_is_dominant:mins                                                 -2.007
+                                                                                         (2.105)
+         is_equal:seller_is_dominant:mins                                                -4.758*
+                                                                                         (2.406)
+                                        N       1764       1764       1764       1764       1764
+                                      AIC    13306.1    13305.1    13327.5    13315.8    13329.4
+                                      BIC    13355.4    13376.3    13371.3    13425.3    13400.6
+
+--- Extra effects for model (1) (HC3 Robust SE) ---
+eq_price=6: effect=1.891, SE=1.181, t=1.602, p=0.109
+eq_price=3: effect=5.899, SE=1.272, t=4.636, p=0.000
+eq_price=9: effect=7.834, SE=1.486, t=5.272, p=0.000
+Wald heterogeneity: chi2=30.827, df=2, p=0.000
+
+--- Extra effects for model (2) (HC3 Robust SE) ---
+eq_price=6: effect=3.192, SE=1.341, t=2.381, p=0.017
+eq_price=3: effect=4.805, SE=2.010, t=2.391, p=0.017
+eq_price=9: effect=7.835, SE=2.311, t=3.391, p=0.001
+Wald heterogeneity: chi2=3.140, df=2, p=0.208
+Wald heterogeneity (mins): chi2=1.248, df=2, p=0.536
+
+--- Extra effects for model (3) (HC3 Robust SE) ---
+
+--- Dominant Firm Market Power Tests ---
+Buyer dominant (is_equal=0): coef=-1.095, SE=0.688, t=-1.593, p=0.111
+Seller dominant (is_equal=0): coef=-0.088, SE=0.630, t=-0.140, p=0.888
+Buyer dominant (is_equal=1): coef=-0.689, SE=0.848, t=-0.813, p=0.416
+Seller dominant (is_equal=1): coef=-0.695, SE=1.074, t=-0.648, p=0.517
+
+Wald test - Buyer dominant effect differs by is_equal: chi2=0.140, p=0.709
+Wald test - Seller dominant effect differs by is_equal: chi2=0.238, p=0.626
+Wald test - Joint test (both interactions): chi2=0.388, df=2, p=0.824
+
+--- Extra effects for model (4) (HC3 Robust SE) ---
+eq_price=6: effect=2.863, SE=0.846, t=3.386, p=0.001
+eq_price=3: effect=6.358, SE=1.234, t=5.152, p=0.000
+eq_price=9: effect=8.665, SE=1.189, t=7.287, p=0.000
+Wald heterogeneity: chi2=17.189, df=2, p=0.000
+
+--- Dominant Firm Market Power Tests ---
+Buyer dominant (is_equal=0): coef=0.323, SE=0.877, t=0.368, p=0.713
+Seller dominant (is_equal=0): coef=-0.673, SE=0.889, t=-0.757, p=0.449
+Buyer dominant (is_equal=1): coef=-1.489, SE=1.088, t=-1.368, p=0.171
+Seller dominant (is_equal=1): coef=0.221, SE=1.184, t=0.187, p=0.852
+
+Wald test - Buyer dominant effect differs by is_equal: chi2=1.667, p=0.197
+Wald test - Seller dominant effect differs by is_equal: chi2=0.363, p=0.547
+Wald test - Joint test (both interactions): chi2=2.203, df=2, p=0.332
+
+--- Extra effects for model (5) (HC3 Robust SE) ---
+
+--- Dominant Firm Market Power Tests ---
+Buyer dominant (is_equal=0): coef=-0.601, SE=1.670, t=-0.360, p=0.719
+Seller dominant (is_equal=0): coef=-2.372, SE=1.406, t=-1.687, p=0.092
+Buyer dominant (is_equal=1): coef=2.028, SE=1.920, t=1.056, p=0.291
+Seller dominant (is_equal=1): coef=2.073, SE=2.765, t=0.750, p=0.453
+
+Wald test - Buyer dominant effect differs by is_equal: chi2=1.068, p=0.301
+Wald test - Seller dominant effect differs by is_equal: chi2=2.033, p=0.154
+Wald test - Joint test (both interactions): chi2=2.961, df=2, p=0.228
+
+
+=== Outcome: price_diff | Clustered SE (by session_code) ===
+                           Y = price_diff        (1)        (2)        (3)        (4)        (5)
+                                Intercept  37.965***  38.659***  36.593***  37.576***  37.483***
+                                             (2.857)    (3.038)    (2.990)    (2.796)    (3.203)
+                                 is_equal      1.891      3.192    6.077**      2.863     3.403*
+                                             (2.293)    (3.069)    (2.317)    (2.536)    (1.727)
+                             eq_price_low    -1.453*     -0.947                -0.611           
+                                             (0.727)    (1.118)               (0.831)           
+                            eq_price_high     -2.791  -5.274***               -3.267*           
+                                             (1.471)    (1.479)               (1.459)           
+                                     mins  -4.426***  -5.080***  -4.142***  -3.928***  -5.017***
+                                             (0.859)    (1.149)    (0.549)    (0.566)    (0.946)
+                    is_equal:eq_price_low   4.008***      1.613                 3.494           
+                                             (1.101)    (3.979)               (1.886)           
+                   is_equal:eq_price_high     5.943*      4.643                5.801*           
+                                             (2.748)    (3.260)               (2.754)           
+                            is_equal:mins      0.695     -0.467                            2.561
+                                             (1.088)    (1.358)                          (1.654)
+                                    round  -2.505***  -2.514***  -2.521***  -2.501***  -2.521***
+                                             (0.397)    (0.397)    (0.411)    (0.392)    (0.412)
+                        eq_price_low:mins                -0.500                                 
+                                                        (1.179)                                 
+                       eq_price_high:mins                 2.341                                 
+                                                        (1.325)                                 
+               is_equal:eq_price_low:mins                 2.270                                 
+                                                        (3.938)                                 
+              is_equal:eq_price_high:mins                 1.264                                 
+                                                        (2.660)                                 
+                        buyer_is_dominant                           -1.095      0.323     -0.601
+                                                                   (0.977)    (0.907)    (2.885)
+                       seller_is_dominant                           -0.088     -0.673     -2.372
+                                                                   (1.313)    (1.424)    (2.229)
+               is_equal:buyer_is_dominant                            0.407     -1.811      2.629
+                                                                   (1.789)    (1.208)    (3.349)
+              is_equal:seller_is_dominant                           -0.607      0.893      4.445
+                                                                   (1.581)    (2.136)    (3.277)
+           buyer_is_dominant:eq_price_low                                     -4.303*           
+                                                                              (2.108)           
+          buyer_is_dominant:eq_price_high                                       0.331           
+                                                                              (1.767)           
+          seller_is_dominant:eq_price_low                                       0.410           
+                                                                              (1.426)           
+         seller_is_dominant:eq_price_high                                       1.474           
+                                                                              (2.004)           
+  is_equal:buyer_is_dominant:eq_price_low                                       4.328           
+                                                                              (3.551)           
+ is_equal:buyer_is_dominant:eq_price_high                                       2.866           
+                                                                              (2.427)           
+ is_equal:seller_is_dominant:eq_price_low                                      -2.141           
+                                                                              (3.495)           
+is_equal:seller_is_dominant:eq_price_high                                      -2.417           
+                                                                              (3.449)           
+                   buyer_is_dominant:mins                                                 -0.453
+                                                                                         (1.893)
+                  seller_is_dominant:mins                                                  2.238
+                                                                                         (1.672)
+          is_equal:buyer_is_dominant:mins                                                 -2.007
+                                                                                         (2.860)
+         is_equal:seller_is_dominant:mins                                                 -4.758
+                                                                                         (2.492)
+                                        N       1764       1764       1764       1764       1764
+                                      AIC    13306.1    13305.1    13327.5    13315.8    13329.4
+                                      BIC    13355.4    13376.3    13371.3    13425.3    13400.6
+
+--- Extra effects for model (1) (Clustered SE (by session_code)) ---
+eq_price=6: effect=1.891, SE=2.293, t=0.825, p=0.410
+eq_price=3: effect=5.899, SE=2.358, t=2.502, p=0.012
+eq_price=9: effect=7.834, SE=2.262, t=3.463, p=0.001
+Wald heterogeneity: chi2=15.265, df=2, p=0.000
+
+--- Extra effects for model (2) (Clustered SE (by session_code)) ---
+eq_price=6: effect=3.192, SE=3.069, t=1.040, p=0.298
+eq_price=3: effect=4.805, SE=3.131, t=1.535, p=0.125
+eq_price=9: effect=7.835, SE=3.501, t=2.238, p=0.025
+Wald heterogeneity: chi2=2.690, df=2, p=0.261
+Wald heterogeneity (mins): chi2=1.059, df=2, p=0.589
+
+--- Extra effects for model (3) (Clustered SE (by session_code)) ---
+
+--- Dominant Firm Market Power Tests ---
+Buyer dominant (is_equal=0): coef=-1.095, SE=0.977, t=-1.121, p=0.262
+Seller dominant (is_equal=0): coef=-0.088, SE=1.313, t=-0.067, p=0.946
+Buyer dominant (is_equal=1): coef=-0.689, SE=1.552, t=-0.444, p=0.657
+Seller dominant (is_equal=1): coef=-0.695, SE=0.914, t=-0.761, p=0.447
+
+Wald test - Buyer dominant effect differs by is_equal: chi2=0.052, p=0.820
+Wald test - Seller dominant effect differs by is_equal: chi2=0.147, p=0.701
+Wald test - Joint test (both interactions): chi2=0.204, df=2, p=0.903
+
+--- Extra effects for model (4) (Clustered SE (by session_code)) ---
+eq_price=6: effect=2.863, SE=2.536, t=1.129, p=0.259
+eq_price=3: effect=6.358, SE=3.669, t=1.733, p=0.083
+eq_price=9: effect=8.665, SE=1.874, t=4.623, p=0.000
+Wald heterogeneity: chi2=7.557, df=2, p=0.023
+
+--- Dominant Firm Market Power Tests ---
+Buyer dominant (is_equal=0): coef=0.323, SE=0.907, t=0.356, p=0.722
+Seller dominant (is_equal=0): coef=-0.673, SE=1.424, t=-0.472, p=0.637
+Buyer dominant (is_equal=1): coef=-1.489, SE=1.015, t=-1.467, p=0.142
+Seller dominant (is_equal=1): coef=0.221, SE=1.618, t=0.136, p=0.891
+
+Wald test - Buyer dominant effect differs by is_equal: chi2=2.249, p=0.134
+Wald test - Seller dominant effect differs by is_equal: chi2=0.175, p=0.676
+Wald test - Joint test (both interactions): chi2=2.261, df=2, p=0.323
+
+--- Extra effects for model (5) (Clustered SE (by session_code)) ---
+
+--- Dominant Firm Market Power Tests ---
+Buyer dominant (is_equal=0): coef=-0.601, SE=2.885, t=-0.208, p=0.835
+Seller dominant (is_equal=0): coef=-2.372, SE=2.229, t=-1.064, p=0.287
+Buyer dominant (is_equal=1): coef=2.028, SE=1.637, t=1.239, p=0.215
+Seller dominant (is_equal=1): coef=2.073, SE=2.181, t=0.951, p=0.342
+
+Wald test - Buyer dominant effect differs by is_equal: chi2=0.616, p=0.433
+Wald test - Seller dominant effect differs by is_equal: chi2=1.840, p=0.175
+Wald test - Joint test (both interactions): chi2=3.603, df=2, p=0.165
+
+
+Standard errors in parentheses.
+* p<.05, ** p<.01, *** p<.001.
+
